@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="icon" type="image/svg" href="image/icon/favicon.svg" />
-    <title>INDOOR</title>
+    <title>{$titulo}</title>
 </head>
 
 <body>
@@ -60,6 +60,16 @@
                             </tr>
                         </thead>
                         <tbody class="tablaInfoEquipo">
+                        {foreach from=$jugadores_voley item=jugador }
+                            <tr>
+                             <td>{$jugador->nombre}</td>
+                             <td>{$jugador->nombre}</td>
+                             <td>{$jugador->nombre}</td>
+                             <td>{$jugador->nombre}</td>
+                             <td>{$jugador->nombre}</td>
+                            </tr>
+                            
+                        {/foreach}
                         </tbody>
                     </table>
 
@@ -94,9 +104,9 @@
         <p>Tandil</p>
         <p>28/04/2020</p>
     </footer>
-     <!--
-    <script src="js/tabla.js"></script>
-    -->
+{* 
+    <script src="js/tabla.js"></script> *}
+ 
 </body>
 
 </html>

@@ -10,12 +10,12 @@
 
         function __construct (){
             $this->view = new VoleyView();
-            $this->view = new VoleyModel();
+            $this->model = new VoleyModel();
         }
 
         function Home(){
-            //$jugadoresVoley = $this->model->GetJugadores();
-            $this->view->ShowHome();
+            $jugadoresVoley = $this->model->GetJugadores();
+            $this->view->ShowHome($jugadoresVoley);
         }
 
 

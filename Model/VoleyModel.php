@@ -5,7 +5,7 @@
         private $db;
 
         function __construct(){
-            $this->db = new PDO('mysql:host=localhost;'.'dbname=db_volley;charset=utf8', 'root', '');
+            $this->db = new PDO('mysql:host=localhost;'.'dbname=volley;charset=utf8', 'root', '');
         }
 
         function GetJugadores(){
