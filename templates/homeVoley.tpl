@@ -39,12 +39,19 @@
                         </thead>
                         <tbody class="tablaInfoEquipo">
                         {foreach from=$jugadores_voley item=jugador }
-                            <tr>
+                            <tr  class="fa fa-pencil-square-o edit" >
                              <td>{$jugador->numero}</td>
-                             <td>{$jugador->posicion}</td>
+                             {foreach from=$posiciones item=posicion}
+                                {if $jugador->id_posicion eq $posicion->id}
+                                    <td>{$posicion->nombre}</td>
+                                {else}
+                                  
+                                {/if}
+                             {/foreach}
                              <td>{$jugador->nombre}</td>
                              <td>{$jugador->altura}</td>
                              <td>{$jugador->edad}</td>
+                             <td class="fa fa-pencil-square-o" ></td>
                             </tr>
                             
                         {/foreach}

@@ -14,9 +14,15 @@
             return $sentencia->fetchAll(PDO::FETCH_OBJ);
         }
 
+        function GetPosiciones(){
+            $sentencia = $this->db->prepare("SELECT * FROM posicion");
+            $sentencia->execute();
+            return $sentencia->fetchAll(PDO::FETCH_OBJ);
+        }
+
         function insertarJugador($numero,$posicion,$nombre,$edad,$altura){
-            $sentencia = $this->db->prepare("INSERT INTO jugador(numero,posicion,nombre,edad,altura,id_equipo) VALUES (?,?,?,?,?,?)");
-            $id = 1;
+           
+            $sentencia = $this->db->prepare("INSERT INTO jugador(numero,id_posicion,nombre,edad,altura,id_equipo) VALUES (?,?,?,?,?,?)");
             $sentencia->execute(array($numero,$posicion,$nombre,$edad,$altura,"1"));
         }
     }

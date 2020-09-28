@@ -10,12 +10,12 @@ class VoleyView{
             $this->title = "VOLLEY !!!";
         }
 
-        function ShowHome($jugadores=null){
+        function ShowHome($jugadores=null,$posiciones=null){
 
             $smarty = new Smarty();
             $smarty->assign('titulo', $this->title);
             $smarty->assign('jugadores_voley', $jugadores);
-
+            $smarty->assign('posiciones',$posiciones);
             $smarty->display('templates/homeVoley.tpl');
 
         }

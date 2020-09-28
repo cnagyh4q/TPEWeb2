@@ -10,7 +10,7 @@
 
     $r->addRoute("home", "GET", "VoleyController", "Home");
    
-    $r->addRoute("addJudador","POST","VoleyController","AddJugador");
+    $r->addRoute("agregar","POST","VoleyController","AgregarJugador");
 
 
 
