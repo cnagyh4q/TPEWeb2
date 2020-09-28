@@ -9,6 +9,8 @@
     $r = new Router();
 
     $r->addRoute("home", "GET", "VoleyController", "Home");
+   
+    $r->addRoute("addJudador","POST","VoleyController","AddJugador");
 
 
 

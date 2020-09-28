@@ -18,7 +18,18 @@
             $this->view->ShowHome($jugadoresVoley);
         }
 
+        function AddJugador(){
 
+            echo ($_POST['numero'] . $_POST['posicion']);
+            // Falta validar
+            /*if( isset($_POST['posicion']) && isset($_POST['nombre']) 
+            && isset($_POST['edad']) && isset($_POST['numero']) && isset($_POST['altura'])){
+             */
+            var_dump(array($_POST['numero'],$_POST['posicion'],$_POST['nombre'],$_POST['edad'],$_POST['altura']));
+            $this->model->insertarJugador($_POST['numero'],$_POST['posicion'],$_POST['nombre'],$_POST['edad'],$_POST['altura']);
+            //$this->Home();
+            //}
+        }
 
     }
 

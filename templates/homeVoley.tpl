@@ -1,27 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="icon" type="image/svg" href="image/icon/favicon.svg" />
-    <title>{$titulo}</title>
-</head>
-
-<body>
-    <div class="header ">
-        <h1>VOLLEYBALL</h1>
-        <nav class="menu box">
-            <a class="actual" href="#">HOME</a>
-           <!--
-            <a href="index.html">HOME</a>
-            <a href="beachvolley.html">BEACH VOLLEY</a>
-            -->
-        </nav>
-    </div>
-
+  {include file="header.tpl"}
     <div class="banner-image">
         <img src="image/banner/BannerIndoor.jpg" alt="Banner Indoor">
     </div>
@@ -62,17 +40,17 @@
                         <tbody class="tablaInfoEquipo">
                         {foreach from=$jugadores_voley item=jugador }
                             <tr>
+                             <td>{$jugador->numero}</td>
+                             <td>{$jugador->posicion}</td>
                              <td>{$jugador->nombre}</td>
-                             <td>{$jugador->nombre}</td>
-                             <td>{$jugador->nombre}</td>
-                             <td>{$jugador->nombre}</td>
-                             <td>{$jugador->nombre}</td>
+                             <td>{$jugador->altura}</td>
+                             <td>{$jugador->edad}</td>
                             </tr>
                             
                         {/foreach}
                         </tbody>
                     </table>
-
+                    {include file="formAddJugador.tpl"}
                 </section>
             </article>
 
@@ -99,14 +77,5 @@
         </div>
 
     </div>
-    <footer>
-        <p>VOLLEYBALL</p>
-        <p>Tandil</p>
-        <p>28/04/2020</p>
-    </footer>
-{* 
-    <script src="js/tabla.js"></script> *}
- 
-</body>
 
-</html>
+    {include file="footer.tpl"}
