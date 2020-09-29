@@ -1,22 +1,29 @@
 <?php   
 
-    require_once "./View/VoleyView.php";
+    require_once "./View/HomeView.php";
+    require_once "./View/IndoorView.php";
     require_once "./Model/VoleyModel.php";
 
     class VoleyController{
 
-        private $view;
+        private $homeView;
+        private $indoorView;
         private $model;
 
         function __construct (){
-            $this->view = new VoleyView();
+            $this->indoorView = new IndoorView();
+            $this->homeView = new HomeView();
             $this->model = new VoleyModel();
         }
 
-        function Home(){
+        function Indoor(){
             $jugadoresVoley = $this->model->GetJugadores();
             $posiciones = $this->model->GetPosiciones();
-            $this->view->ShowHome($jugadoresVoley,$posiciones);
+            $this->indoorView->ShowIndoor($jugadoresVoley,$posiciones);
+        }
+
+        function Home(){
+           $this->homeView->ShowHome();
         }
 
         function AgregarJugador(){
@@ -33,7 +40,7 @@
             $this->model->insertarJugador($_POST['numero'],$_POST['selectPosiciones'],$_POST['nombre'],$_POST['edad'],$_POST['altura']);
             
             }
-            $this->Home();
+            $this->indoorView->ShowIndoorLocation();
         }
 
     }

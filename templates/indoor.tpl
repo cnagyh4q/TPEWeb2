@@ -39,19 +39,18 @@
                         </thead>
                         <tbody class="tablaInfoEquipo">
                         {foreach from=$jugadores_voley item=jugador }
-                            <tr  class="fa fa-pencil-square-o edit" >
+                            <tr >
                              <td>{$jugador->numero}</td>
                              {foreach from=$posiciones item=posicion}
                                 {if $jugador->id_posicion eq $posicion->id}
-                                    <td>{$posicion->nombre}</td>
-                                {else}
-                                  
+                                    <td>{$posicion->nombre}</td>                  
                                 {/if}
                              {/foreach}
                              <td>{$jugador->nombre}</td>
                              <td>{$jugador->altura}</td>
                              <td>{$jugador->edad}</td>
-                             <td class="fa fa-pencil-square-o" ></td>
+                             <td class="edit"><i class="fa fa-pencil-square-o"/></td>
+                             <td class="delet"><i class="fa fa-ban" /></td>
                             </tr>
                             
                         {/foreach}
@@ -84,5 +83,7 @@
         </div>
 
     </div>
+
+    <script src="js/tablaNew.js"></script> 
 
     {include file="footer.tpl"}

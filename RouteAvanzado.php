@@ -1,6 +1,5 @@
 <?php
     require_once 'Controller/VoleyController.php';
-    //require_once 'Controller/VoleyAdvanceController.php';
     require_once 'RouterClass.php';
     
     // CONSTANTES PARA RUTEO
@@ -9,6 +8,8 @@
     $r = new Router();
 
     $r->addRoute("home", "GET", "VoleyController", "Home");
+
+    $r->addRoute("indoor", "GET", "VoleyController", "Indoor");
    
     $r->addRoute("agregar","POST","VoleyController","AgregarJugador");
 

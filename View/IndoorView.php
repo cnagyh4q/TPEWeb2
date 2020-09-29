@@ -2,26 +2,27 @@
 
 require_once "./libs/smarty/Smarty.class.php";
 
-class VoleyView{
+class IndoorView{
 
         private $title;
 
-        function __construct(){
-            $this->title = "VOLLEY !!!";
+      
+       function __construct(){
+            $this->title = "INDOOR !!!";
         }
 
-        function ShowHome($jugadores=null,$posiciones=null){
+        function ShowIndoor($jugadores=null,$posiciones=null){
 
             $smarty = new Smarty();
             $smarty->assign('titulo', $this->title);
             $smarty->assign('jugadores_voley', $jugadores);
             $smarty->assign('posiciones',$posiciones);
-            $smarty->display('templates/homeVoley.tpl');
+            $smarty->display('templates/indoor.tpl');
 
         }
 
-        function ShowHomeLocation(){
-            header("Location: ".BASE_URL."home");
+        function ShowIndoorLocation(){
+            header("Location: ".BASE_URL."indoor");
         }
 
 }
