@@ -9,6 +9,40 @@ function cargarPagina() {
         
     }
 
+    //document.querySelector("#edit").addEventListener("click", editarElemento);
+
+    var editar = document.getElementById("edit7");
+    editar.addEventListener("click", editarJugador);
+
+    var delet = document.getElementById("delet11");
+    delet.addEventListener("click", eliminarJugador);
+
+    
+    
+    function editarJugador (event){
+        console.log("hola");
+
+        let fila = event.currentTarget.parentElement;
+        id = fila.id.split("jugador")[1];
+        console.log(id);
+        
+        
+        /*
+        var tds = event.path[1].children
+            var datos = []
+            for (var i = 0; i < tds.length; i++) {
+                datos.push(tds[i].innerText)
+            }
+        console.log(datos);
+          */
+
+
+    }    
+    function eliminarJugador (){
+        console.log("hola");
+
+    } 
+
     //document.querySelector("#btn-agregarRow").addEventListener("click", enviarFormulario );
 
     function agregarJugador (){

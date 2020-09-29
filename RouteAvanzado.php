@@ -13,7 +13,7 @@
    
     $r->addRoute("agregar","POST","VoleyController","AgregarJugador");
 
-
+    $r->addRoute("edit","POST","VoleyController","EditarJugador");
 
 
     /*

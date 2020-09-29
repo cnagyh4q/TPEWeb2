@@ -26,6 +26,10 @@
            $this->homeView->ShowHome();
         }
 
+        function EditarJugador(){
+            $this->homeView->ShowFooter();
+        }
+
         function AgregarJugador(){
 
             //echo ($_POST['numero'] . $_POST['posicion']);

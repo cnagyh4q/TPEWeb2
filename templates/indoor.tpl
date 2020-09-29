@@ -39,7 +39,7 @@
                         </thead>
                         <tbody class="tablaInfoEquipo">
                         {foreach from=$jugadores_voley item=jugador }
-                            <tr >
+                            <tr id="jugador{$jugador->id}">
                              <td>{$jugador->numero}</td>
                              {foreach from=$posiciones item=posicion}
                                 {if $jugador->id_posicion eq $posicion->id}
@@ -49,8 +49,9 @@
                              <td>{$jugador->nombre}</td>
                              <td>{$jugador->altura}</td>
                              <td>{$jugador->edad}</td>
-                             <td class="edit"><i class="fa fa-pencil-square-o"/></td>
-                             <td class="delet"><i class="fa fa-ban" /></td>
+                             <td type="submit" name="edit" id="edit{$jugador->id}" class="edit"><i class="fa fa-pencil-square-o"/></td>
+                             <td type="submit" name="delet" id="delet{$jugador->id}" class="delet"><i class="fa fa-ban" /></td>
+                             {*<input type="TEXT" name="fecha_inicio" id="fecha_inicio"  />*}
                             </tr>
                             
                         {/foreach}
