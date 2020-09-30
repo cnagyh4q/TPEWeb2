@@ -49,8 +49,11 @@
                              <td>{$jugador->nombre}</td>
                              <td>{$jugador->altura}</td>
                              <td>{$jugador->edad}</td>
-                             <td type="submit" name="edit" id="edit{$jugador->id}" class="edit"><i class="fa fa-pencil-square-o"/></td>
-                             <td type="submit" name="delet" id="delet{$jugador->id}" class="delet"><i class="fa fa-ban" /></td>
+                             {*<td type="submit" name="edit" click="edit{$jugador->id}" class="edit"><i class="fa fa-pencil-square-o"/></td>
+                             <td type="submit" name="delet" click="delet{$jugador->id}" class="delet"><i class="fa fa-ban" /></td>
+                             *}
+                             <td><a href="editarJugador/{$jugador->id}" class="editar"><i class="fa fa-pencil-square-o"/></td>
+                             <td><a href="borrarJugador/{$jugador->id}" class="eliminar"><i class="fa fa-ban" /></td>
                              {*<input type="TEXT" name="fecha_inicio" id="fecha_inicio"  />*}
                             </tr>
                             

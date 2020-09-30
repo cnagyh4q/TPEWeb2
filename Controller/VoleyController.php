@@ -9,25 +9,51 @@
         private $homeView;
         private $indoorView;
         private $model;
+        private $accion;
 
         function __construct (){
             $this->indoorView = new IndoorView();
             $this->homeView = new HomeView();
             $this->model = new VoleyModel();
+            $this->accion = "agregar";
         }
 
-        function Indoor(){
+        function Indoor($accio=null){
+            
             $jugadoresVoley = $this->model->GetJugadores();
             $posiciones = $this->model->GetPosiciones();
-            $this->indoorView->ShowIndoor($jugadoresVoley,$posiciones);
+            if (is_null($accio)){
+                
+                echo("es null");
+                $this->indoorView->ShowIndoor($jugadoresVoley,$posiciones,"agregar");
+                //$this->indoorView->ShowIndoorLocation();
+            }
+            else{
+                $this->accion = $accio;
+                echo($this->accion);
+                echo("hola");
+                $this->indoorView->ShowIndoor($jugadoresVoley,$posiciones,$accio);
+               // $this->indoorView->ShowIndoorLocation();
+                
+            }
         }
 
         function Home(){
            $this->homeView->ShowHome();
         }
 
-        function EditarJugador(){
-            $this->homeView->ShowFooter();
+
+        function EditarJugador($params = null){
+            
+            $accion = "editar";
+            $jugador_id = $params[':ID'];
+
+            $this->model->EditarJugador($jugador_id);
+            
+           
+            //$this->indoorView->ShowIndoor($jugadoresVoley,$posiciones,$accion);
+            //$this->indoorView->ShowIndoorLocation();
+            //$this->Indoor($accion);
         }
 
         function AgregarJugador(){

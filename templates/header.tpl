@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="icon" type="image/svg" href="image/icon/favicon.svg" />
     <script type="module" src="js/app.js"></script>
+    {*<script type="module" src="js/tablaNew.js"></script>*}
     <title>VOLLEYBALL</title>
 </head>
 

@@ -11,10 +11,14 @@ class IndoorView{
             $this->title = "INDOOR !!!";
         }
 
-        function ShowIndoor($jugadores=null,$posiciones=null){
+        function ShowIndoor($jugadores=null,$posiciones=null,$accion=null){
 
+            if (is_null($accion)){
+                $accion = "agregar";
+            }
             $smarty = new Smarty();
             $smarty->assign('titulo', $this->title);
+            $smarty->assign('accion', $accion);
             $smarty->assign('jugadores_voley', $jugadores);
             $smarty->assign('posiciones',$posiciones);
             $smarty->display('templates/indoor.tpl');

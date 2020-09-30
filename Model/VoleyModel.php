@@ -20,6 +20,9 @@
             return $sentencia->fetchAll(PDO::FETCH_OBJ);
         }
 
+        function EditarJugador($id){
+            
+        }
         function insertarJugador($numero,$posicion,$nombre,$edad,$altura){
            
             $sentencia = $this->db->prepare("INSERT INTO jugador(numero,id_posicion,nombre,edad,altura,id_equipo) VALUES (?,?,?,?,?,?)");

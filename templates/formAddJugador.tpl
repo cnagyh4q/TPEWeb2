@@ -3,7 +3,7 @@
     <button id="btn-vaciarTabla">Vaciar</button>
     <button id="btn-agregarJugador">Agregar</button>
 </div>
-<form action="agregar" method="post" id="form-jugador" class="oculto">
+<form action="{$accion}" method="post" id="form-jugador" class="oculto">
     <input id="input-id" type="hidden">
     <input type="number" name="numero" placeholder="Nro Jugador" id="inputNro" required> </input>
     {*<input type="text" name="posicion" placeholder="Posicion en la que juega" id="inputPos" required> </input>*}
