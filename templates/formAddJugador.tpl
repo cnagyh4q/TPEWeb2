@@ -1,6 +1,4 @@
 <div>
-    <button id="btn-cargarTabla">Cargar Varios</button>
-    <button id="btn-vaciarTabla">Vaciar</button>
     <button id="btn-agregarJugador">Agregar</button>
 </div>
 <form action="{$accion}" method="post" id="form-jugador" class="oculto">
