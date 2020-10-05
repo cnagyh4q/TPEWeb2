@@ -52,7 +52,7 @@
                              <td>{$jugador->nombre}</td>
                              {*<td>{$jugador->altura}</td>*} 
                              {*<td>{$jugador->edad}</td>*} 
-                             <td {*onclick="edit({$jugador->id})"*} class="edit"><a href="editar/{$jugador->id}"/><i class="fa fa-pencil-square-o"/></td>
+                             <td {*onclick="edit({$jugador->id})"*}><a href="editar/{$jugador->id}" class="edit fa fa-pencil-square-o"/></td>
                              <td ><a href="detalle/{$jugador->id}" class="fa fa-list-alt" aria-hidden="true" /></td>
                              <td ><a href="eliminar/{$jugador->id}" class="fa fa-ban delet" /></td>
                             
@@ -63,7 +63,7 @@
                         </tbody>
                     </table>
                     <div>
-                        <button id="btn-agregarJugador"><a href="formeditaragregar" /> Agregar</button>
+                       <a class="btn btn-outline-primary" href="formeditaragregar" > Agregar</a>
                     </div>
                  {*  {include file="formAddJugador.tpl"}         type="submit"   *}
                 </section>
