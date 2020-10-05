@@ -1,96 +1,56 @@
 
 
-    function edit(id){
-        document.querySelector("#input-id").value=id;  
-        document.querySelector("#btn-agregarRow").value='Modificar Jugador';
-        mostrarForm();    
-    }    
+   function edit(id){
+    document.querySelector("#input-id").value=id;  
+    document.querySelector("#btn-agregarRow").value='Modificar Jugador';
+    //falta tomar los datos de la fila
+    let jugadorid = "#jugador"+id;
+    let filajugador=document.querySelector(jugadorid);
 
+    let nombre = filajugador.querySelector(".nombre").innerHTML;
+    console.log(nombre);
 
-    function mostrarForm (){
-        
-        document.querySelector("#form-jugador").className ="";
-        
-    }
+    mostrarForm();    
+}    
 
-    //document.querySelector("#edit").addEventListener("click", editarElemento);
-    /*
-    let editar =  document.querySelectorAll(".editar");
+function mostrarForm (){
+  document.querySelector("#form-jugador").className ="";
+}
 
-    editar.addEventListener("click", (event) => {
-        event.preventDefault();
-    });
-*/  
-    document.querySelector(".editar").addEventListener("click", (event) => {
-        event.preventDefault();
-        
-        document.querySelector("#form-jugador").className ="";
-        /*if (document.querySelector("#input-id").value != null && document.querySelector("#input-id").value != ''){
-            modificarJugador();
-        }
-        else{agregarJugador();}*/
-    });
+document.addEventListener("DOMContentLoaded", cargarPagina);
 
+function cargarPagina() {
 
+  document.querySelector("#btn-agregarJugador").addEventListener("click", ()=>{
+      document.querySelector("#input-id").value='';
+      document.querySelector("#btn-agregarRow").value='Agregar Jugador'; 
+      console.log("paso JS");
+      mostrarForm();
+  });
 
-    document.querySelector(".eliminar").addEventListener("click", mostrarForm);
-    /*
-    var editar = document.getElementById("edit7");
-    editar.addEventListener("click", editarJugador);
+  
 
-    document.querySelector("#btn-agregarJugador").addEventListener("click", ()=>{
-        document.querySelector("#input-id").value='';
-        document.querySelector("#btn-agregarRow").value='Agregar Jugador'; 
-        mostrarForm();
-    });
+  function agregarJugador (){
+      let form = document.querySelector("#form-jugador");
+      form.action="agregar";        
+      form.submit();
+      
+  }
 
-    */
-    
-    function editarJugador (event){
-        console.log("hola");
+  function modificarJugador(){
+      let form = document.querySelector("#form-jugador");
+      form.action="modificarjugador";        
+      form.submit();
+      
+  }
 
-        let fila = event.currentTarget.parentElement;
-        id = fila.id.split("jugador")[1];
-        console.log(id);
-        
-        
-        /*
-        var tds = event.path[1].children
-            var datos = []
-            for (var i = 0; i < tds.length; i++) {
-                datos.push(tds[i].innerText)
-            }
-        console.log(datos);
-          */
-
-
-    }    
-    function eliminarJugador (){
-        console.log("hola");
-
-    } 
-
-    //document.querySelector("#btn-agregarRow").addEventListener("click", enviarFormulario );
-
-    function agregarJugador (){
-        let form = document.querySelector("#form-jugador");
-        form.action="agregar";        
-        form.submit();
-        
-    }
-
-    function modificarJugador(){
-        let form = document.querySelector("#form-jugador");
-        form.action="modificarjugador";        
-        form.submit();
-    }
-
-   document.querySelector("#form-jugador").addEventListener("submit", (event) => {
-        event.preventDefault();
-        if (document.querySelector("#input-id").value != null && document.querySelector("#input-id").value != ''){
-            modificarJugador();
-        }
-        else{agregarJugador();}
-    });
-
-
+  /*
+ document.querySelector("#form-jugador").addEventListener("submit", (event) => {
+      event.preventDefault();
+      if (document.querySelector("#input-id").value != null && document.querySelector("#input-id").value != ''){
+          modificarJugador();
+      }
+      else{agregarJugador();}
+  });
+*/
+}

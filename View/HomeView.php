@@ -13,16 +13,13 @@ class HomeView{
         function ShowHome(){
             $smarty = new Smarty();
             $smarty->assign('titulo', $this->title);
+            $smarty->assign('url',BASE_URL);
             $smarty->display('templates/home.tpl');
 
         }
 
-        function ShowFooter(){
-            $smarty = new Smarty();
-            //$smarty->assign('titulo', $this->title);
-            $smarty->display('templates/footer.tpl');
-        }
-        function ShowHomeLocation(){
+     
+       function ShowHomeLocation(){
             header("Location: ".BASE_URL."home");
         }
 

@@ -11,10 +11,25 @@
 
     $r->addRoute("indoor", "GET", "VoleyController", "Indoor");
    
+    
+    $r->addRoute("formeditaragregar","GET","VoleyController","AddJugador");
     $r->addRoute("agregar","POST","VoleyController","AgregarJugador");
 
-    $r->addRoute("editarJugador/:ID","GET","VoleyController","EditarJugador");
+    
+    $r->addRoute("editar/:ID","GET","VoleyController","EditarJugador");
+    $r->addRoute("editarID/:ID","POST","VoleyController","EditarJugadorConID");
 
+
+    $r->addRoute("eliminar/:ID","GET","VoleyController","EliminarJugador");
+    //$r->addRoute("eliminarID/:ID","POST","VoleyController","EliminarJugadorID");
+
+    
+    $r->addRoute("detalle/:ID","GET","VoleyController","DetalleJugador");
+   
+   
+   
+   
+   // $r->addRoute("formeditaragregar","GET","VoleyController","AddJugador");
 
     /*
     // rutas

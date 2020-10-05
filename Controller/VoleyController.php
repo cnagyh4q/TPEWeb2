@@ -9,52 +9,64 @@
         private $homeView;
         private $indoorView;
         private $model;
-        private $accion;
 
         function __construct (){
             $this->indoorView = new IndoorView();
             $this->homeView = new HomeView();
             $this->model = new VoleyModel();
-            $this->accion = "agregar";
         }
 
-        function Indoor($accio=null){
-            
+        function Indoor(){
             $jugadoresVoley = $this->model->GetJugadores();
             $posiciones = $this->model->GetPosiciones();
-            if (is_null($accio)){
-                
-                echo("es null");
-                $this->indoorView->ShowIndoor($jugadoresVoley,$posiciones,"agregar");
-                //$this->indoorView->ShowIndoorLocation();
-            }
-            else{
-                $this->accion = $accio;
-                echo($this->accion);
-                echo("hola");
-                $this->indoorView->ShowIndoor($jugadoresVoley,$posiciones,$accio);
-               // $this->indoorView->ShowIndoorLocation();
-                
-            }
+            $this->indoorView->ShowIndoor($jugadoresVoley,$posiciones);
         }
 
         function Home(){
            $this->homeView->ShowHome();
         }
 
-
-        function EditarJugador($params = null){
-            
-            $accion = "editar";
-            $jugador_id = $params[':ID'];
-
-            $this->model->EditarJugador($jugador_id);
-            
-           
-            //$this->indoorView->ShowIndoor($jugadoresVoley,$posiciones,$accion);
-            //$this->indoorView->ShowIndoorLocation();
-            //$this->Indoor($accion);
+        function EliminarJugador($params = null){
+            $id= $params[':ID'];
+            $this->model->EliminarJugador($id);
+            $this->indoorView->ShowIndoorLocation();
         }
+
+        function DetalleJugador($params = null){
+            $id = $params[':ID'];
+            //$this->model->DetalleJugador($id);
+            $jugador = $this->model->GetJugador($id);
+            $posiciones = $this->model->GetPosiciones();
+            $this->indoorView->ShowDetalleJugador($jugador,$posiciones);
+        }
+
+
+        function EditarJugador($params=null){
+            //cunsulta base de datos
+            $id= $params[':ID'];
+            $jugador = $this->model->GetJugador($id);
+            $posiciones = $this->model->GetPosiciones();
+            $this->indoorView->ShowModificarJugador($jugador,$posiciones);
+        
+        }
+        
+        function EditarJugadorConID($params = null){
+            $id= $params[':ID'];
+            $this->model->editarJugador($id,$_POST['numero'],$_POST['selectPosiciones'],$_POST['nombre'],$_POST['edad'],$_POST['altura']);
+            
+            $this->indoorView->ShowIndoorLocation();
+        }
+
+        function AddJugador(){
+            //$jugadoresVoley = $this->model->GetJugadores();
+            $posiciones = $this->model->GetPosiciones();
+            //$accion = "agregar";
+             $this->indoorView->ShowAddJugador($posiciones);
+
+        }
+
+        
+
 
         function AgregarJugador(){
 

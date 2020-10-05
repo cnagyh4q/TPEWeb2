@@ -11,17 +11,51 @@ class IndoorView{
             $this->title = "INDOOR !!!";
         }
 
-        function ShowIndoor($jugadores=null,$posiciones=null,$accion=null){
+        function ShowIndoor($jugadores=null,$posiciones=null){
 
-            if (is_null($accion)){
-                $accion = "agregar";
-            }
             $smarty = new Smarty();
             $smarty->assign('titulo', $this->title);
-            $smarty->assign('accion', $accion);
             $smarty->assign('jugadores_voley', $jugadores);
             $smarty->assign('posiciones',$posiciones);
+            $smarty->assign('url',BASE_URL);
             $smarty->display('templates/indoor.tpl');
+
+        }
+
+        function ShowAddJugador($posiciones=null){
+            $smarty = new Smarty();
+            $smarty->assign('titulo', $this->title);
+            //$smarty->assign('jugadores_voley', $jugadores);
+            $smarty->assign('posiciones',$posiciones);
+            //$smarty->assign('jugador',$jugador);
+            //$accion="agregar";
+
+            //$smarty->assign('accion',$accion);
+            $smarty->assign('accion',"agregar");
+            $smarty->assign('url',BASE_URL);
+            $smarty->display('templates/formAddJugador.tpl');
+
+        }
+
+        function ShowDetalleJugador($jugador=null,$posiciones=null){
+            $smarty = new Smarty();
+            $smarty->assign('titulo', $this->title);
+            $smarty->assign('posiciones',$posiciones);
+            $smarty->assign('jugador', $jugador);
+            $smarty->assign('url',BASE_URL);
+            $smarty->display('templates/detalleJugador.tpl');
+
+        }
+
+        function ShowModificarJugador($jugador=null,$posiciones=null){
+
+            $smarty = new Smarty();
+            $smarty->assign('titulo', $this->title);
+            $smarty->assign('jugador', $jugador);
+            $smarty->assign('posiciones',$posiciones);
+            $smarty->assign('accion',"editar");
+            $smarty->assign('url',BASE_URL);
+            $smarty->display('templates/formEditarJugador.tpl');
 
         }
 

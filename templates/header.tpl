@@ -9,8 +9,8 @@
     <link rel="stylesheet" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="icon" type="image/svg" href="image/icon/favicon.svg" />
+    <base href="{$url}">
     <script type="module" src="js/app.js"></script>
-    {*<script type="module" src="js/tablaNew.js"></script>*}
     <title>VOLLEYBALL</title>
 </head>
 
