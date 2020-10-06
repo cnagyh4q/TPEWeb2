@@ -23,7 +23,13 @@
                 </section>
                 <label for="filtro">filtro por posiciones</label>
                 <select name="filtro" id="filtro" placeholder="Seleccione">
-                    <option value="all">Todas</option>
+                    <option value="all" selected="selected">Todas</option>
+                    {foreach from=$posiciones item=posicion}
+                           {* <td>{$posicion->nombre}</td>    *}        
+                           <option value="{$posicion->nombre}">{$posicion->nombre}</option>     
+                       
+                     {/foreach}
+
                 </select>
                 <h3>Equipo Actual</h3>
                 <section class="table-responsive">
@@ -31,7 +37,7 @@
                         <thead class="thead-dark">
                             <tr>
                                 <th>N.º</th>
-                                {*<th>Pos.</th>*}
+                                <th>Pos.</th>
                                 <th>Nombre</th>
                                 {*<th>Altura</th>*}
                                 {*<th>Edad</th>*}
@@ -46,15 +52,13 @@
                              <td>{$jugador->numero}</td>
                              {foreach from=$posiciones item=posicion}
                                 {if $jugador->id_posicion eq $posicion->id}
-                                   {* <td>{$posicion->nombre}</td>    *}              
+                                   <td>{$posicion->nombre}</td>              
                                 {/if}
                              {/foreach}
-                             <td>{$jugador->nombre}</td>
-                             {*<td>{$jugador->altura}</td>*} 
-                             {*<td>{$jugador->edad}</td>*} 
-                             <td {*onclick="edit({$jugador->id})"*}><a href="editar/{$jugador->id}" class="edit fa fa-pencil-square-o"/></td>
-                             <td ><a href="detalle/{$jugador->id}" class="fa fa-list-alt" aria-hidden="true" /></td>
-                             <td ><a href="eliminar/{$jugador->id}" class="fa fa-ban delet" /></td>
+                             <td>{$jugador->nombre}</td>                                                        
+                             <td><a href="detalle/{$jugador->id}" class="fa fa-list-alt" aria-hidden="true" /></td>
+                             <td><a href="editar/{$jugador->id}" class="edit fa fa-pencil-square-o"/></td>
+                             <td><a href="eliminar/{$jugador->id}" class="fa fa-ban delet" /></td>
                             
                              {*<input type="TEXT" name="fecha_inicio" id="fecha_inicio"  />*}
                             </tr>
