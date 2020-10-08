@@ -1,5 +1,6 @@
 <?php
     require_once 'Controller/VoleyController.php';
+    require_once 'Controller/LoginController.php';
     require_once 'RouterClass.php';
     
     // CONSTANTES PARA RUTEO
@@ -25,6 +26,11 @@
 
     
     $r->addRoute("detalle/:ID","GET","VoleyController","DetalleJugador");
+
+
+    $r->addRoute("login","GET","LoginController","Login");
+
+    
    
    
    

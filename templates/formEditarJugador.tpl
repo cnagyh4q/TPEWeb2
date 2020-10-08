@@ -16,7 +16,6 @@
             {* <option value="{$posicion->id}">{$posicion->nombre}</option> *}
             {if $posicion->id eq $jugador->id_posicion}
             <option value="{$posicion->id}" selected="selected">{$posicion->nombre}</option>
-
             {else}
             <option value="{$posicion->id}">{$posicion->nombre}</option>
             {/if}

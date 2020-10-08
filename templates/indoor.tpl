@@ -39,10 +39,8 @@
                                 <th>N.º</th>
                                 <th>Pos.</th>
                                 <th>Nombre</th>
-                                {*<th>Altura</th>*}
-                                {*<th>Edad</th>*}
-                                <th>Edit</th>
                                 <th>Detail</th>
+                                <th>Edit</th>                                
                                 <th>Delete</th>
                             </tr>
                         </thead>
