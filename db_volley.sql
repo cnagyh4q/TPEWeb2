@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 28-09-2020 a las 19:58:43
+-- Tiempo de generación: 09-10-2020 a las 21:03:25
 -- Versión del servidor: 10.4.14-MariaDB
 -- Versión de PHP: 7.4.9
 
@@ -63,8 +63,10 @@ CREATE TABLE `jugador` (
 
 INSERT INTO `jugador` (`nombre`, `numero`, `id_posicion`, `id`, `edad`, `altura`, `id_equipo`) VALUES
 ('Spajic', 13, 3, 7, 46, 2.02, 1),
-('Conte', 7, 4, 11, 27, 1.93, 1),
-('De Cecco', 2, 2, 12, 33, 1.88, 1);
+('Hugo Conte', 7, 4, 11, 50, 1.95, 1),
+('De Cecco', 2, 2, 12, 35, 1.88, 1),
+('Matias Tomas', 6, 1, 15, 34, 1.8, 1),
+('Berni', 6, 2, 18, 25, 1.77, 1);
 
 -- --------------------------------------------------------
 
@@ -87,6 +89,27 @@ INSERT INTO `posicion` (`id`, `nombre`) VALUES
 (3, 'Central'),
 (4, 'Punta Receptor'),
 (5, 'Opuesto');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `usuario`
+--
+
+CREATE TABLE `usuario` (
+  `id` int(11) NOT NULL,
+  `nombre` text NOT NULL,
+  `email` text NOT NULL,
+  `password` text NOT NULL,
+  `permiso` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `usuario`
+--
+
+INSERT INTO `usuario` (`id`, `nombre`, `email`, `password`, `permiso`) VALUES
+(1, 'Matias', 'tomasmat_12@hotmail.com', '$2y$10$18e4s/4oodD.ls2uuMbK3.azfdJGvXG.1B/d4wGPBVjUQbo7k2WzK', 'Admin');
 
 --
 -- Índices para tablas volcadas
@@ -114,6 +137,12 @@ ALTER TABLE `posicion`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indices de la tabla `usuario`
+--
+ALTER TABLE `usuario`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
@@ -127,13 +156,19 @@ ALTER TABLE `equipo`
 -- AUTO_INCREMENT de la tabla `jugador`
 --
 ALTER TABLE `jugador`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT de la tabla `posicion`
 --
 ALTER TABLE `posicion`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT de la tabla `usuario`
+--
+ALTER TABLE `usuario`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Restricciones para tablas volcadas

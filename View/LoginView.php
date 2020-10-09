@@ -9,11 +9,19 @@ class LoginView{
 
     $smarty = new Smarty();
     $smarty->assign('url',BASE_URL);
+    $smarty->assign('message',"Hola");
     $smarty->display('templates/login.tpl');
 
    }
 
+   function showHome(){
 
+      $smarty = semarty();
+      $smarty->assign('url',BASE_URL);
+      //$smarty->assign('message',"Hola");
+      $smarty->display('templates/home.tpl');
+
+   }
 }
 
 

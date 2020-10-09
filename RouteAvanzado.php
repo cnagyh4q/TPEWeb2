@@ -29,10 +29,11 @@
 
 
     $r->addRoute("login","GET","LoginController","Login");
+    $r->addRoute("logout","GET","LoginController","Logout");
 
-    
+    $r->addRoute("verificarUsuario","POST","LoginController","VerificarUsuario");
    
-   
+    $r->addRoute("encriptar","GET","LoginController","Encriptar");
    
    
    // $r->addRoute("formeditaragregar","GET","VoleyController","AddJugador");
