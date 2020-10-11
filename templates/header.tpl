@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/style.css">
-    <link rel="icon" type="image/svg" href="image/icon/favicon.svg" />    
+    <link rel="icon" type="image/svg" href="image/icon/favicon.svg" />
     <script type="module" src="js/app.js"></script>
     <title>VOLLEYBALL</title>
 </head>
@@ -18,7 +18,7 @@
 
     <div class="box header">
         <header>
-        
+
             <button class="icon-menu" id="iconMenu">
                 &#9776;
             </button>
@@ -28,6 +28,16 @@
             <button id="btn-home">HOME</button>
             <button id="btn-indoor">INDOOR</button>
             {* <button id="btn-beach">BEACH VOLLEY</button> *}
+            {if isset($session) }
+            {if !$session->validSession()}
+            <button id="btn-login">LOGIN</button>
+            {else}
+            <a href="logout" id="btn-logout">LOGOUT</a>
+            {/if}
+            {/if}
+
         </nav>
 
     </div>
+
+    <div class="box">

@@ -85,6 +85,12 @@ h3 {
 
 }
 
+.sesion {
+    border: none;
+    background: inherit;
+    color: white;
+}
+
 button {
     border-radius: 10px;
     border: 1px solid blue;
@@ -113,18 +119,7 @@ button:not(:disabled) {
     por especeficidad gana .actual sobre a 
 */
 
-.menu a {
-    padding: 10px;
-    font-size: 1rem;
-    color: white;
-    text-decoration: none;
-}
-
 .menu a:hover {
-    color: blue;
-}
-
-.menu a:visited {
     color: blue;
 }
 
@@ -248,6 +243,28 @@ form select {
     color: black;
     font-size: 1.2rem;
     border: 0;
+}
+
+.LoginContent{
+    width: 70%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 400px;
+    
+}
+
+.detalleContent{
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.card {
+    margin: auto;
+    
 }
 
 @media only screen and (min-width:600px) {

@@ -2,28 +2,34 @@
 
 
 require_once "./View/LoginView.php";
+require_once "./View/HomeView.php";
 require_once "./Model/UserModel.php";
+require_once "./Controller/Session.php";
 
  class LoginController {
 
     private  $view;
-    private  $model;    
+    private $viewHome;
+    private  $model;
+    private  $session;    
 
     function __construct (){
         $this->view = new LoginView();
+        $this->viewHome = new HomeView();
         $this->model = new UserModel();
+        
     }
 
     function Login(){
         $this->view->showLogin();
    
     } 
+
     function Logout(){
         session_start();
         session_destroy();
-        header("Location: ".LOGIN);
-
-    }
+        $this->viewHome->ShowHomeLocation();
+     }
 
     function Encriptar(){
 
@@ -42,29 +48,24 @@ require_once "./Model/UserModel.php";
             $userDB = $this->model->GetUser($user);
 
             if(isset($userDB) && $userDB){
-                // si  existe el usuario entra..
-
                 if (password_verify($pass, $userDB->password)){
-
-                    session_start();
-                    $_SESSION["EMAIL"] = $userDB->email;
-                    $_SESSION['LAST_ACTIVITY'] = time();
-                    echo "rompe";
+                    $this->session = new Session($userDB->email , $userDB->permiso);
                     header("Location: ".BASE_URL."home");
-                    $this->view->ShowHome();
+                    $this->viewHome->ShowHome($this->session);
                 }else{
+                    
                     $this->view->ShowLogin("Contraseña incorrecta");
                 }
 
             }else{
-                // No existe el user en la DB
                 $this->view->ShowLogin("El usuario no existe");
+                
             }
         }
 
     }
 
-
+    
    
  }
 

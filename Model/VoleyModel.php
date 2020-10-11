@@ -38,8 +38,6 @@ class VoleyModel{
     }
 
     function editarJugador($id,$numero,$posicion,$nombre,$edad,$altura){
-                                        //"UPDATE tarea SET Finalizada=1." WHERE idTarea=?"
-                                       // UPDATE empleado SET nombre = ?, email = ?, telefono = ? WHERE id_empleado = ?
         $sentencia = $this->db->prepare("UPDATE jugador SET numero=? , id_posicion= ? , nombre=? , edad=? , altura=? , id_equipo=? WHERE id=? ");
         $sentencia->execute(array($numero,$posicion,$nombre,$edad,$altura,"1",$id));
         

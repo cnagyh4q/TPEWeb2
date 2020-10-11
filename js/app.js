@@ -75,6 +75,11 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
 
+    document.querySelector("#btn-login").addEventListener("click", event => {
+         cargarPagina("login");
+    });
+
+
     //cargarPagina("home");
 
 });

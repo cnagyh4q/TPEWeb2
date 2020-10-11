@@ -1,20 +1,35 @@
-{include file="header.tpl"} 
+{include file="header.tpl"}
+
+<div class="detalleContent">
+    <div class="card" style="width: 18rem;">
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">{$jugador->numero}</li>
+            <li class="list-group-item">
+                {foreach from=$posiciones item=posicion}
+                {if $jugador->id_posicion eq $posicion->id}
+                {$posicion->nombre}
+                {/if}
+                {/foreach}
+            </li>
+            <li class="list-group-item">
+                {$jugador->nombre}
+            </li>
+            <li class="list-group-item">
+                {$jugador->altura}
+            </li>
+            <li class="list-group-item">
+                {$jugador->edad}
+            </li>
+        </ul>
+    </div>
+    <a class="buttonVolver"  href="indoor">Volver</a>
+</div>
 
 
-<p>{$jugador->numero}</p>
-<p>{foreach from=$posiciones item=posicion}
-    {if $jugador->id_posicion eq $posicion->id}
-       {$posicion->nombre}             
-    {/if}
- {/foreach}
- </p>
- <p>{$jugador->nombre}</p>
- <p>{$jugador->altura}</p>
- <p>{$jugador->edad}</p>
-
- <a class="buttonVolver" id="btn-agregarRow" value="Modificar Jugador" href="indoor">Volver</a>
 
 
 
 
-{include file="footer.tpl"} 
+
+
+{include file="footer.tpl"}

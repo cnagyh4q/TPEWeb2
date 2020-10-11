@@ -10,10 +10,11 @@ class HomeView{
             $this->title = "VOLLEY !!!";
         }
 
-        function ShowHome(){
+        function ShowHome($session = null){
             $smarty = new Smarty();
             $smarty->assign('titulo', $this->title);
             $smarty->assign('url',BASE_URL);
+            $smarty->assign('session',$session);                
             $smarty->display('templates/home.tpl');
 
         }

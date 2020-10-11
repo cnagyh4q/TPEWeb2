@@ -3,27 +3,30 @@
     require_once "./View/HomeView.php";
     require_once "./View/IndoorView.php";
     require_once "./Model/VoleyModel.php";
+    require_once "./Controller/Session.php";
 
     class VoleyController{
 
         private $homeView;
         private $indoorView;
         private $model;
+        private $session;
 
         function __construct (){
             $this->indoorView = new IndoorView();
             $this->homeView = new HomeView();
             $this->model = new VoleyModel();
+            $this->session = new Session();
         }
 
         function Indoor(){
             $jugadoresVoley = $this->model->GetJugadores();
             $posiciones = $this->model->GetPosiciones();
-            $this->indoorView->ShowIndoor($jugadoresVoley,$posiciones);
+            $this->indoorView->ShowIndoor($jugadoresVoley,$posiciones,$this->session);
         }
 
         function Home(){
-           $this->homeView->ShowHome();
+           $this->homeView->ShowHome($this->session);
         }
 
         function EliminarJugador($params = null){
@@ -34,19 +37,17 @@
 
         function DetalleJugador($params = null){
             $id = $params[':ID'];
-            //$this->model->DetalleJugador($id);
             $jugador = $this->model->GetJugador($id);
             $posiciones = $this->model->GetPosiciones();
-            $this->indoorView->ShowDetalleJugador($jugador,$posiciones);
+            $this->indoorView->ShowDetalleJugador($jugador,$posiciones,$this->session);
         }
 
 
         function EditarJugador($params=null){
-            //cunsulta base de datos
             $id= $params[':ID'];
             $jugador = $this->model->GetJugador($id);
             $posiciones = $this->model->GetPosiciones();
-            $this->indoorView->ShowModificarJugador($jugador,$posiciones);
+            $this->indoorView->ShowModificarJugador($jugador,$posiciones,$this->session);
         
         }
         
@@ -58,10 +59,9 @@
         }
 
         function AddJugador(){
-            //$jugadoresVoley = $this->model->GetJugadores();
+          
             $posiciones = $this->model->GetPosiciones();
-            //$accion = "agregar";
-             $this->indoorView->ShowAddJugador($posiciones);
+             $this->indoorView->ShowAddJugador($posiciones , $this->session);
 
         }
 
@@ -70,14 +70,8 @@
 
         function AgregarJugador(){
 
-            //echo ($_POST['numero'] . $_POST['posicion']);
-            // Falta validar
-            //var_dump($_POST['selectPosiciones']);
-            if( isset($_POST['selectPosiciones']) && isset($_POST['nombre']) 
-            && isset($_POST['edad']) && isset($_POST['numero']) && isset($_POST['altura'])){
-             
-            //var_dump(array($_POST['numero'],$_POST['posicion'],$_POST['nombre'],$_POST['edad'],$_POST['altura']));
-            
+           if( isset($_POST['selectPosiciones']) && isset($_POST['nombre']) 
+            && isset($_POST['edad']) && isset($_POST['numero']) && isset($_POST['altura'])){    
 
             $this->model->insertarJugador($_POST['numero'],$_POST['selectPosiciones'],$_POST['nombre'],$_POST['edad'],$_POST['altura']);
             
@@ -86,5 +80,4 @@
         }
 
     }
-
 ?>

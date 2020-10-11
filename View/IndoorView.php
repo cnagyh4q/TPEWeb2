@@ -11,11 +11,12 @@ class IndoorView{
             $this->title = "INDOOR !!!";
         }
 
-        function ShowIndoor($jugadores=null,$posiciones=null){
+        function ShowIndoor($jugadores=null,$posiciones=null , $session){
 
             $smarty = new Smarty();
             $smarty->assign('titulo', $this->title);
             $smarty->assign('jugadores_voley', $jugadores);
+            $smarty->assign('session', $session);
             $smarty->assign('posiciones',$posiciones);
             $smarty->assign('url',BASE_URL);
             $smarty->display('templates/indoor.tpl');
@@ -25,12 +26,7 @@ class IndoorView{
         function ShowAddJugador($posiciones=null){
             $smarty = new Smarty();
             $smarty->assign('titulo', $this->title);
-            //$smarty->assign('jugadores_voley', $jugadores);
             $smarty->assign('posiciones',$posiciones);
-            //$smarty->assign('jugador',$jugador);
-            //$accion="agregar";
-
-            //$smarty->assign('accion',$accion);
             $smarty->assign('accion',"agregar");
             $smarty->assign('url',BASE_URL);
             $smarty->display('templates/formAddJugador.tpl');

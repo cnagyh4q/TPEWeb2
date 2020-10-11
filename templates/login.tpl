@@ -1,17 +1,22 @@
 {include file="header.tpl"}
+<div class="banner-image">
+    <img src="image/banner/BannerIndoor.jpg" alt="Banner Indoor">
+</div>
 
-<div class="wrapper fadeInDown">
-  <div id="formContent">     
+  <div id="LoginContent" class="LoginContent">     
     <!-- Login Form -->
-    <div class="alert alert-danger" role="alert">
+    {if $message}
+      <div class="alert alert-danger" role="alert">
       {$message}
-    </div>
-    <form action="verificarUsuario" method="post">
-      <input type="text" id="login" class="fadeIn second" name="email" placeholder="mail">
-      <input type="text" id="password" class="fadeIn third" name="password" placeholder="password">
-      <input type="submit" class="fadeIn fourth" value="Log In">
+    </div>  
+    {/if}
+    
+    <form action="login" method="post">
+      <input type="text" id="login"  name="email" placeholder="mail">
+      <input type="text" id="password"  name="password" placeholder="password">
+      <input type="submit"  class="buttonAceptar" value="Log In">
     </form>
   </div>
-</div>
+
 {include file="footer.tpl"}
 
