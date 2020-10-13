@@ -30,9 +30,14 @@
         }
 
         function EliminarJugador($params = null){
-            $id= $params[':ID'];
-            $this->model->EliminarJugador($id);
-            $this->indoorView->ShowIndoorLocation();
+            if ($this->session->validSession() && $this->session->isAdmin()){
+                $id= $params[':ID'];
+                $this->model->EliminarJugador($id);
+                $this->indoorView->ShowIndoorLocation();
+            }
+            else{
+                $this->homeView->ShowHome($this->session);
+            }
         }
 
         function DetalleJugador($params = null){
@@ -44,24 +49,37 @@
 
 
         function EditarJugador($params=null){
-            $id= $params[':ID'];
-            $jugador = $this->model->GetJugador($id);
-            $posiciones = $this->model->GetPosiciones();
-            $this->indoorView->ShowModificarJugador($jugador,$posiciones,$this->session);
-        
+            if ($this->session->validSession() && $this->session->isAdmin()){
+                $id= $params[':ID'];
+                $jugador = $this->model->GetJugador($id);
+                $posiciones = $this->model->GetPosiciones();
+                $this->indoorView->ShowModificarJugador($jugador,$posiciones,$this->session);
+            }
+            else{
+                $this->homeView->ShowHome($this->session);
+            }
         }
         
         function EditarJugadorConID($params = null){
-            $id= $params[':ID'];
-            $this->model->editarJugador($id,$_POST['numero'],$_POST['selectPosiciones'],$_POST['nombre'],$_POST['edad'],$_POST['altura']);
-            
-            $this->indoorView->ShowIndoorLocation();
+            if ($this->session->validSession() && $this->session->isAdmin()){
+                $id= $params[':ID'];
+                $this->model->editarJugador($id,$_POST['numero'],$_POST['selectPosiciones'],$_POST['nombre'],$_POST['edad'],$_POST['altura']);
+                
+                $this->indoorView->ShowIndoorLocation();
+            }
+            else{
+                $this->homeView->ShowHome($this->session);
+            }
         }
 
         function AddJugador(){
-          
-            $posiciones = $this->model->GetPosiciones();
-             $this->indoorView->ShowAddJugador($posiciones , $this->session);
+            if ($this->session->validSession() && $this->session->isAdmin()){
+                $posiciones = $this->model->GetPosiciones();
+                $this->indoorView->ShowAddJugador($posiciones , $this->session);
+            }
+            else{
+                $this->homeView->ShowHome($this->session);
+            }
 
         }
 
@@ -69,14 +87,19 @@
 
 
         function AgregarJugador(){
+            if ($this->session->validSession() && $this->session->isAdmin()){
+                if( isset($_POST['selectPosiciones']) && isset($_POST['nombre']) 
+                    && isset($_POST['edad']) && isset($_POST['numero']) && isset($_POST['altura'])){    
 
-           if( isset($_POST['selectPosiciones']) && isset($_POST['nombre']) 
-            && isset($_POST['edad']) && isset($_POST['numero']) && isset($_POST['altura'])){    
-
-            $this->model->insertarJugador($_POST['numero'],$_POST['selectPosiciones'],$_POST['nombre'],$_POST['edad'],$_POST['altura']);
-            
+                    $this->model->insertarJugador($_POST['numero'],$_POST['selectPosiciones'],$_POST['nombre'],$_POST['edad'],$_POST['altura']);
+                
+                }
+                $this->indoorView->ShowIndoorLocation();
             }
-            $this->indoorView->ShowIndoorLocation();
+            else{
+                $this->homeView->ShowHome($this->session);
+            }
+            
         }
 
     }

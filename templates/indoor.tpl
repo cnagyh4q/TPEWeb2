@@ -36,9 +36,13 @@
                 <thead class="thead-dark">
                     <tr>
                         <th>N.º</th>
-                        <th>Pos.</th>
+                        <th>Posicion</th>
                         <th>Nombre</th>
                         <th>Detail</th>
+                        {if isset($session) && $session->isAdmin()}
+                            <th>Edit</th>
+                            <th>Delete</th>
+                        {/if}
                     </tr>
                 </thead>
                 <tbody class="tablaInfoEquipo">
@@ -68,7 +72,8 @@
             </table>
             {if isset($session) && $session->isAdmin()}
             <div>
-                <a class="btn btn-outline-primary" href="formeditaragregar"> Agregar</a>
+                <a class="btn btn-outline-primary" href="editarPosiciones"> Administrar Posiciones</a>
+                <a class="btn btn-outline-primary" href="agregarJ"> Agregar</a>
             </div>
             {/if}
 

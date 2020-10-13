@@ -25,6 +25,7 @@ class VoleyModel{
         $sentencia = $this->db->prepare("DELETE FROM jugador WHERE id=?");
         $sentencia->execute(array($id));
     }
+
     function GetPosiciones(){
         $sentencia = $this->db->prepare("SELECT * FROM posicion");
         $sentencia->execute();
@@ -38,6 +39,7 @@ class VoleyModel{
     }
 
     function editarJugador($id,$numero,$posicion,$nombre,$edad,$altura){
+        
         $sentencia = $this->db->prepare("UPDATE jugador SET numero=? , id_posicion= ? , nombre=? , edad=? , altura=? , id_equipo=? WHERE id=? ");
         $sentencia->execute(array($numero,$posicion,$nombre,$edad,$altura,"1",$id));
         

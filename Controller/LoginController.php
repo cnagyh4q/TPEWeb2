@@ -9,7 +9,7 @@ require_once "./Controller/Session.php";
  class LoginController {
 
     private  $view;
-    private $viewHome;
+    private  $viewHome;
     private  $model;
     private  $session;    
 
@@ -32,8 +32,8 @@ require_once "./Controller/Session.php";
      }
 
     function Encriptar(){
-
-        $clave = "1258963";  
+        //1258963
+        $clave = "1234";  
         $clave_encriptada = password_hash ($clave , PASSWORD_DEFAULT );  
         echo "La clave $clave encriptada es la siguiente: $clave_encriptada";
     

@@ -1,6 +1,7 @@
 <?php
     require_once 'Controller/VoleyController.php';
     require_once 'Controller/LoginController.php';
+    require_once 'Controller/PosicionesController.php';
     require_once 'RouterClass.php';
     
     // CONSTANTES PARA RUTEO
@@ -13,7 +14,7 @@
     $r->addRoute("indoor", "GET", "VoleyController", "Indoor");
    
     
-    $r->addRoute("formeditaragregar","GET","VoleyController","AddJugador");
+    $r->addRoute("agregarJ","GET","VoleyController","AddJugador");
     $r->addRoute("agregar","POST","VoleyController","AgregarJugador");
 
     
@@ -30,12 +31,23 @@
 
     $r->addRoute("login","GET","LoginController","Login");
     $r->addRoute("logout","GET","LoginController","Logout");
-
-
-
     $r->addRoute("login","POST","LoginController","VerificarUsuario");
 
    
+    $r->addRoute("editarPosiciones","GET","PosicionesController","PanelEdicionPos");
+    
+
+    $r->addRoute("agregarPosicion","GET","PosicionesController","AgregarPosicion");
+    $r->addRoute("agregarPosicion","POST","PosicionesController","AgregarPosicionDB");
+
+    
+    $r->addRoute("editarPosicion/:ID","GET","PosicionesController","EditarPosicion");
+    $r->addRoute("editarPosicion/:ID","POST","PosicionesController","EditarPosicionDB");
+
+    //$r->addRoute("eliminarPosicion/:ID","GET","PosicionesController","EliminarPosicion");
+    $r->addRoute("eliminarPosicion/:ID","GET","PosicionesController","EliminarPosicionDB");
+    
+    
     $r->addRoute("encriptar","GET","LoginController","Encriptar");
    
    

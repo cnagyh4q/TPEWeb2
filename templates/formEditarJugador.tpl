@@ -27,4 +27,5 @@
         <input class="buttonAceptar" type="submit" id="btn-agregarRow" value="Modificar Jugador"></input>
     </form>
 </div>
+<a class="buttonVolver"  href="indoor">Volver</a>
 {include file="footer.tpl"}
