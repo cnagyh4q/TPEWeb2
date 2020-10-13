@@ -11,12 +11,14 @@
         private $indoorView;
         private $model;
         private $session;
+        private $login;
 
         function __construct (){
             $this->indoorView = new IndoorView();
             $this->homeView = new HomeView();
             $this->model = new VoleyModel();
             $this->session = new Session();
+            $this->login = new LoginView();
         }
 
         function Indoor(){
@@ -36,7 +38,7 @@
                 $this->indoorView->ShowIndoorLocation();
             }
             else{
-                $this->homeView->ShowHome($this->session);
+                $this->login->showLogin("Se requiere permisos");
             }
         }
 
@@ -56,7 +58,8 @@
                 $this->indoorView->ShowModificarJugador($jugador,$posiciones,$this->session);
             }
             else{
-                $this->homeView->ShowHome($this->session);
+                //$this->homeView->ShowHome($this->session);
+                $this->login->showLogin("Se requiere permisos");
             }
         }
         
@@ -68,7 +71,8 @@
                 $this->indoorView->ShowIndoorLocation();
             }
             else{
-                $this->homeView->ShowHome($this->session);
+                $this->login->showLogin("Se requiere permisos");
+                //$this->homeView->ShowHome($this->session);
             }
         }
 
@@ -78,7 +82,8 @@
                 $this->indoorView->ShowAddJugador($posiciones , $this->session);
             }
             else{
-                $this->homeView->ShowHome($this->session);
+                $this->login->showLogin("Se requiere permisos");
+                //$this->homeView->ShowHome($this->session);
             }
 
         }
@@ -97,7 +102,8 @@
                 $this->indoorView->ShowIndoorLocation();
             }
             else{
-                $this->homeView->ShowHome($this->session);
+                $this->login->showLogin("Se requiere permisos");
+                //$this->homeView->ShowHome($this->session);
             }
             
         }

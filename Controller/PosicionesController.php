@@ -11,6 +11,7 @@
         private  $session; 
         private  $posicionesView;
         private  $homeView;
+        private  $login;
 
 
         function __construct (){
@@ -19,6 +20,7 @@
             $this->model = new PosicionesModel();
             $this->posicionesView = new PosicionesView();
             $this->session = new Session();
+            $this->login = new LoginView();
 
         }
 
@@ -33,7 +35,7 @@
 
             }
             else{
-                $this->homeView->ShowHome($this->session);
+                $this->login->showLogin("Se requiere permisos");
             }
 
         }
@@ -48,7 +50,7 @@
                     $this->homeView->ShowHome($this->session);
             }
             else{
-                 $this->homeView->ShowHome($this->session);
+                $this->login->showLogin("Se requiere permisos");
             }         
         }
 
@@ -59,7 +61,7 @@
             
             }
             else{
-                $this->homeView->ShowHome($this->session);
+                $this->login->showLogin("Se requiere permisos");
             }
 
         }
@@ -72,7 +74,7 @@
             
             }
             else{
-                $this->homeView->ShowHome($this->session);
+                $this->login->showLogin("Se requiere permisos");
             }
 
         }
@@ -84,7 +86,7 @@
                     $this->homeView->ShowHome($this->session);
                 }
             else{
-                    $this->homeView->ShowHome($this->session);
+                $this->login->showLogin("Se requiere permisos");
             }
 
         }
@@ -96,7 +98,7 @@
                 $this->homeView->ShowHome($this->session);
             }
             else{
-                $this->homeView->ShowHome($this->session);
+                $this->login->showLogin("Se requiere permisos");
             }
         }
 
