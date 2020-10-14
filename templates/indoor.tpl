@@ -24,8 +24,7 @@
         <select name="filtro" id="filtro" placeholder="Seleccione">
             <option value="all" selected="selected">Todas</option>
             {foreach from=$posiciones item=posicion}
-            {* <td>{$posicion->nombre}</td> *}
-            <option value="{$posicion->nombre}">{$posicion->nombre}</option>
+                        <option value="{$posicion->nombre}">{$posicion->nombre}</option>
 
             {/foreach}
 
@@ -40,8 +39,8 @@
                         <th>Nombre</th>
                         <th>Detail</th>
                         {if isset($session) && $session->isAdmin()}
-                            <th>Edit</th>
-                            <th>Delete</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
                         {/if}
                     </tr>
                 </thead>
@@ -60,11 +59,7 @@
 
                         <td><a href="editar/{$jugador->id}" class="edit fa fa-pencil-square-o" /></td>
                         <td><a href="eliminar/{$jugador->id}" class="fa fa-ban delet" /></td>
-
-
                         {/if}
-
-                        {*<input type="TEXT" name="fecha_inicio" id="fecha_inicio" />*}
                     </tr>
 
                     {/foreach}

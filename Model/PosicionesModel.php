@@ -8,18 +8,18 @@ class PosicionesModel{
         $this->db = new PDO('mysql:host=localhost;'.'dbname=db_volley;charset=utf8', 'root', '');
     }
 
-    function EliminarPosicion($id){
+    function eliminarPosicion($id){
         $sentencia = $this->db->prepare("DELETE FROM posicion WHERE id=?");
         $sentencia->execute(array($id));
     }
 
-    function GetPosiciones(){
+    function getPosiciones(){
         $sentencia = $this->db->prepare("SELECT * FROM posicion");
         $sentencia->execute();
         return $sentencia->fetchAll(PDO::FETCH_OBJ);
     }
 
-    function GetPosicion($id){
+    function getPosicion($id){
         $sentencia = $this->db->prepare("SELECT * FROM posicion WHERE id=? ");
         $sentencia->execute(array($id));
         return $sentencia->fetch(PDO::FETCH_OBJ);

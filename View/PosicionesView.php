@@ -1,19 +1,16 @@
 <?php
 
 require_once "./libs/smarty/Smarty.class.php";
-require_once "./View/HomeView.php";
 
 class PosicionesView{
 
         private $title;
-        private $viewPosiciones;
-      
+             
        function __construct(){
             $this->title = "Posiciones ";
-            //$this->viewPosiciones = new HomeView();
         }
 
-        function EdicionPosiciones($posiciones = null,$session = null){
+        function edicionPosiciones($posiciones = null,$session = null){
             
             $smarty = new Smarty();
             $smarty->assign('titulo', $this->title);
@@ -23,7 +20,7 @@ class PosicionesView{
             $smarty->display('templates/administradorPosiciones.tpl');
         }
 
-        function AgregarPosicion($session = null){
+        function agregarPosicion($session = null){
             $smarty = new Smarty();
             $smarty->assign('titulo', $this->title);
             $smarty->assign('session', $session);
@@ -33,7 +30,7 @@ class PosicionesView{
 
         }
 
-        function EditarPosicion($posicion = null,$session = null){
+        function editarPosicion($posicion,$session = null){
             $smarty = new Smarty();
             $smarty->assign('titulo', $this->title);
             $smarty->assign('session', $session);

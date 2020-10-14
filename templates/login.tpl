@@ -12,9 +12,9 @@
     {/if}
     
     <form action="login" method="post">
-      <input type="text" id="login"  name="email" placeholder="mail">
-      <input type="text" id="password"  name="password" placeholder="password">
-      <input type="submit"  class="buttonAceptar" value="Log In">
+      <input type="email" id="login"  name="email" placeholder="mail"/>
+      <input type="text" id="password"  name="password" placeholder="password"/>
+      <input type="submit"  class="buttonAceptar" value="Ingresar"/>
     </form>
   </div>
 

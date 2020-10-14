@@ -18,7 +18,6 @@
 
     <div class="box header">
         <header>
-
             <button class="icon-menu" id="iconMenu">
                 &#9776;
             </button>
@@ -27,7 +26,6 @@
         <nav class="menu" id="menu">
             <button id="btn-home">HOME</button>
             <button id="btn-indoor">INDOOR</button>
-            {* <button id="btn-beach">BEACH VOLLEY</button> *}
             {if isset($session) }
             {if !$session->validSession()}
             <button id="btn-login">LOGIN</button>

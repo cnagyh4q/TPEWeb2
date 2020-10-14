@@ -3,8 +3,8 @@
 <div class="detalleContent">
     <div class="card" style="width: 18rem;">
         <ul class="list-group list-group-flush">
-            <li class="list-group-item">{$jugador->numero}</li>
-            <li class="list-group-item">
+            <li class="list-group-item">Numero: {$jugador->numero}</li>
+            <li class="list-group-item"> Posicion: 
                 {foreach from=$posiciones item=posicion}
                 {if $jugador->id_posicion eq $posicion->id}
                 {$posicion->nombre}
@@ -12,13 +12,13 @@
                 {/foreach}
             </li>
             <li class="list-group-item">
-                {$jugador->nombre}
+                Nombre: {$jugador->nombre}
             </li>
             <li class="list-group-item">
-                {$jugador->altura}
+                Altura: {$jugador->altura} m
             </li>
             <li class="list-group-item">
-                {$jugador->edad}
+                Edad: {$jugador->edad} Años
             </li>
         </ul>
     </div>

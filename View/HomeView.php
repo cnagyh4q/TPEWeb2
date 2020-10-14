@@ -10,7 +10,7 @@ class HomeView{
             $this->title = "VOLLEY !!!";
         }
 
-        function ShowHome($session = null){
+        function showHome($session = null){
             $smarty = new Smarty();
             $smarty->assign('titulo', $this->title);
             $smarty->assign('url',BASE_URL);
@@ -20,7 +20,7 @@ class HomeView{
         }
 
      
-       function ShowHomeLocation(){
+       function showHomeLocation(){
             header("Location: ".BASE_URL."home");
         }
 

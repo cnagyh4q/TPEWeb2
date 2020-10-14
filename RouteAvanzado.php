@@ -9,70 +9,47 @@
 
     $r = new Router();
 
-    $r->addRoute("home", "GET", "VoleyController", "Home");
+    $r->addRoute("home", "GET", "VoleyController", "home");
 
-    $r->addRoute("indoor", "GET", "VoleyController", "Indoor");
+    $r->addRoute("indoor", "GET", "VoleyController", "indoor");
    
     
-    $r->addRoute("agregarJ","GET","VoleyController","AddJugador");
-    $r->addRoute("agregar","POST","VoleyController","AgregarJugador");
+    $r->addRoute("agregarJ","GET","VoleyController","addJugador");
+    $r->addRoute("agregar","POST","VoleyController","agregarJugador");
 
     
-    $r->addRoute("editar/:ID","GET","VoleyController","EditarJugador");
-    $r->addRoute("editarID/:ID","POST","VoleyController","EditarJugadorConID");
+    $r->addRoute("editar/:ID","GET","VoleyController","editarJugador");
+    $r->addRoute("editarID/:ID","POST","VoleyController","editarJugadorConID");
 
 
-    $r->addRoute("eliminar/:ID","GET","VoleyController","EliminarJugador");
-    //$r->addRoute("eliminarID/:ID","POST","VoleyController","EliminarJugadorID");
-
-    
-    $r->addRoute("detalle/:ID","GET","VoleyController","DetalleJugador");
+    $r->addRoute("eliminar/:ID","GET","VoleyController","eliminarJugador");
+       
+    $r->addRoute("detalle/:ID","GET","VoleyController","detalleJugador");
 
 
-    $r->addRoute("login","GET","LoginController","Login");
-    $r->addRoute("logout","GET","LoginController","Logout");
-    $r->addRoute("login","POST","LoginController","VerificarUsuario");
+    $r->addRoute("login","GET","LoginController","login");
+    $r->addRoute("logout","GET","LoginController","logout");
+    $r->addRoute("login","POST","LoginController","verificarUsuario");
 
    
-    $r->addRoute("editarPosiciones","GET","PosicionesController","PanelEdicionPos");
+    $r->addRoute("editarPosiciones","GET","PosicionesController","panelEdicionPos");
     
 
-    $r->addRoute("agregarPosicion","GET","PosicionesController","AgregarPosicion");
-    $r->addRoute("agregarPosicion","POST","PosicionesController","AgregarPosicionDB");
+    $r->addRoute("agregarPosicion","GET","PosicionesController","agregarPosicion");
+    $r->addRoute("agregarPosicion","POST","PosicionesController","agregarPosicionDB");
 
     
-    $r->addRoute("editarPosicion/:ID","GET","PosicionesController","EditarPosicion");
-    $r->addRoute("editarPosicion/:ID","POST","PosicionesController","EditarPosicionDB");
+    $r->addRoute("editarPosicion/:ID","GET","PosicionesController","editarPosicion");
+    $r->addRoute("editarPosicion/:ID","POST","PosicionesController","editarPosicionDB");
 
-    //$r->addRoute("eliminarPosicion/:ID","GET","PosicionesController","EliminarPosicion");
-    $r->addRoute("eliminarPosicion/:ID","GET","PosicionesController","EliminarPosicionDB");
+    $r->addRoute("eliminarPosicion/:ID","GET","PosicionesController","eliminarPosicionDB");
     
     
-    $r->addRoute("encriptar","GET","LoginController","Encriptar");
-   
-   
-   // $r->addRoute("formeditaragregar","GET","VoleyController","AddJugador");
+    //$r->addRoute("encriptar","GET","LoginController","encriptar");
+    
+     
 
-    /*
-    // rutas
-    $r->addRoute("home", "GET", "TasksController", "Home");
-    $r->addRoute("mermelada", "GET", "TasksController", "Home");
-
-    //Esto lo veo en TasksView
-    $r->addRoute("insert", "POST", "TasksController", "InsertTask");
-
-    $r->addRoute("delete/:ID", "GET", "TasksController", "BorrarLaTaskQueVienePorParametro");
-    $r->addRoute("completar/:ID", "GET", "TasksController", "MarkAsCompletedTask");
-    $r->addRoute("edit/:ID", "GET", "TasksController", "EditTask");
-    */
     //Ruta por defecto.
-    $r->setDefaultRoute("VoleyController", "Home");
+    $r->setDefaultRoute("VoleyController", "home");
 
-    //Advance
-    //$r->addRoute("autocompletar", "GET", "TasksAdvanceController", "AutoCompletar");
-    
-    //run
-    $r->route($_GET['action'], $_SERVER['REQUEST_METHOD']); 
-    
-
-?>
+    $r->route($_GET['action'], $_SERVER['REQUEST_METHOD']);

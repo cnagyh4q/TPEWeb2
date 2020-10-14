@@ -1,7 +1,7 @@
   
 <?php
 
-class VoleyModel{
+class JugadorModel{
 
     private $db;
 
@@ -9,24 +9,24 @@ class VoleyModel{
         $this->db = new PDO('mysql:host=localhost;'.'dbname=db_volley;charset=utf8', 'root', '');
     }
 
-    function GetJugadores(){
-        $sentencia = $this->db->prepare("SELECT * FROM jugador");
+    function getJugadores(){
+        $sentencia = $this->db->prepare("SELECT * FROM jugador ORDER BY numero"   );
         $sentencia->execute();
         return $sentencia->fetchAll(PDO::FETCH_OBJ);
     }
     
-    function GetJugador($id){
+    function getJugador($id){
         $sentencia = $this->db->prepare("SELECT * FROM jugador WHERE id=? ");
         $sentencia->execute(array($id));
         return $sentencia->fetch(PDO::FETCH_OBJ);
     }
 
-    function EliminarJugador($id){
+    function eliminarJugador($id){
         $sentencia = $this->db->prepare("DELETE FROM jugador WHERE id=?");
         $sentencia->execute(array($id));
     }
 
-    function GetPosiciones(){
+    function getPosiciones(){
         $sentencia = $this->db->prepare("SELECT * FROM posicion");
         $sentencia->execute();
         return $sentencia->fetchAll(PDO::FETCH_OBJ);
@@ -34,14 +34,14 @@ class VoleyModel{
 
     function insertarJugador($numero,$posicion,$nombre,$edad,$altura){
        
-        $sentencia = $this->db->prepare("INSERT INTO jugador(numero,id_posicion,nombre,edad,altura,id_equipo) VALUES (?,?,?,?,?,?)");
-        $sentencia->execute(array($numero,$posicion,$nombre,$edad,$altura,"1"));
+        $sentencia = $this->db->prepare("INSERT INTO jugador(numero,id_posicion,nombre,edad,altura) VALUES (?,?,?,?,?)");
+        $sentencia->execute(array($numero,$posicion,$nombre,$edad,$altura));
     }
 
     function editarJugador($id,$numero,$posicion,$nombre,$edad,$altura){
         
-        $sentencia = $this->db->prepare("UPDATE jugador SET numero=? , id_posicion= ? , nombre=? , edad=? , altura=? , id_equipo=? WHERE id=? ");
-        $sentencia->execute(array($numero,$posicion,$nombre,$edad,$altura,"1",$id));
+        $sentencia = $this->db->prepare("UPDATE jugador SET numero=? , id_posicion= ? , nombre=? , edad=? , altura=?  WHERE id=? ");
+        $sentencia->execute(array($numero,$posicion,$nombre,$edad,$altura,$id));
         
     }
 }

@@ -28,10 +28,10 @@
 
 
 
-        function PanelEdicionPos(){
+        function panelEdicionPos(){
             if ($this->session->validSession() && $this->session->isAdmin()){
-                $posiciones = $this->model->GetPosiciones();
-                $this->posicionesView->EdicionPosiciones($posiciones,$this->session);
+                $posiciones = $this->model->getPosiciones();
+                $this->posicionesView->edicionPosiciones($posiciones,$this->session);
 
             }
             else{
@@ -40,24 +40,24 @@
 
         }
 
-        function AgregarPosicionDB(){
+        function agregarPosicionDB(){
             if ($this->session->validSession() && $this->session->isAdmin()){
                     if(isset($_POST['nombre'])){    
     
                         $this->model->insertarPosicion($_POST['nombre']);
                     
                     }
-                    $this->homeView->ShowHome($this->session);
+                    $this->homeView->showHome($this->session);
             }
             else{
                 $this->login->showLogin("Se requiere permisos");
             }         
         }
 
-        function AgregarPosicion(){
+        function agregarPosicion(){
             if ($this->session->validSession() && $this->session->isAdmin()){
             
-                $this->posicionesView->AgregarPosicion($this->session);
+                $this->posicionesView->agregarPosicion($this->session);
             
             }
             else{
@@ -66,7 +66,7 @@
 
         }
 
-        function EditarPosicion($params = null){
+        function editarPosicion($params = null){
             if ($this->session->validSession() && $this->session->isAdmin()){
                 $id= $params[':ID'];
                 $posicion = $this->model->GetPosicion($id);
@@ -79,7 +79,7 @@
 
         }
 
-        function EditarPosicionDB($params = null){
+        function editarPosicionDB($params = null){
             if ($this->session->validSession() && $this->session->isAdmin()){
                     $id= $params[':ID'];
                     $this->model->editarPosicion($id,$_POST['nombre']);
@@ -91,11 +91,11 @@
 
         }
 
-        function EliminarPosicionDB($params = null){
+        function eliminarPosicionDB($params = null){
             if ($this->session->validSession() && $this->session->isAdmin()){
                 $id= $params[':ID'];
-                $this->model->EliminarPosicion($id);
-                $this->homeView->ShowHome($this->session);
+                $this->model->eliminarPosicion($id);
+                $this->homeView->showHome($this->session);
             }
             else{
                 $this->login->showLogin("Se requiere permisos");

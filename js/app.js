@@ -1,5 +1,3 @@
-import {tabla ,actualizar } from './tabla.js';
-
 import {default as home} from './form.js';
 
 document.addEventListener("DOMContentLoaded", function () {
