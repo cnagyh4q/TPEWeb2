@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 14-10-2020 a las 02:18:37
+-- Tiempo de generación: 14-10-2020 a las 02:26:44
 -- Versión del servidor: 10.1.37-MariaDB
 -- Versión de PHP: 7.2.12
 
@@ -21,26 +21,6 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `db_volley`
 --
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `equipo`
---
-
-CREATE TABLE `equipo` (
-  `nombre_equipo` text COLLATE latin1_spanish_ci NOT NULL,
-  `nacionalidad` text COLLATE latin1_spanish_ci NOT NULL,
-  `id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
-
---
--- Volcado de datos para la tabla `equipo`
---
-
-INSERT INTO `equipo` (`nombre_equipo`, `nacionalidad`, `id`) VALUES
-('Argentina', 'Argentino', 1),
-('Brasil', 'Brasil', 4);
 
 -- --------------------------------------------------------
 
@@ -127,12 +107,6 @@ INSERT INTO `usuario` (`id`, `nombre`, `email`, `password`, `permiso`) VALUES
 --
 
 --
--- Indices de la tabla `equipo`
---
-ALTER TABLE `equipo`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indices de la tabla `jugador`
 --
 ALTER TABLE `jugador`
@@ -156,12 +130,6 @@ ALTER TABLE `usuario`
 --
 -- AUTO_INCREMENT de las tablas volcadas
 --
-
---
--- AUTO_INCREMENT de la tabla `equipo`
---
-ALTER TABLE `equipo`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `jugador`
