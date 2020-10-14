@@ -20,18 +20,18 @@ require_once "./Controller/Session.php";
         
     }
 
-    function Login(){
+    function login(){
         $this->view->showLogin();
    
     } 
 
-    function Logout(){
+    function logout(){
         session_start();
         session_destroy();
         $this->viewHome->ShowHomeLocation();
      }
 
-    function Encriptar(){
+    function encriptar(){
         //1258963
         $clave = "1234";  
         $clave_encriptada = password_hash ($clave , PASSWORD_DEFAULT );  
@@ -39,26 +39,26 @@ require_once "./Controller/Session.php";
     
     }
 
-    function VerificarUsuario (){
+    function verificarUsuario (){
         
         $user = $_POST["email"];
         $pass = $_POST["password"];
 
         if(isset($user)){
-            $userDB = $this->model->GetUser($user);
+            $userDB = $this->model->getUser($user);
 
             if(isset($userDB) && $userDB){
                 if (password_verify($pass, $userDB->password)){
                     $this->session = new Session($userDB->email , $userDB->permiso);
                     header("Location: ".BASE_URL."home");
-                    $this->viewHome->ShowHome($this->session);
+                    $this->viewHome->showHome($this->session);
                 }else{
                     
-                    $this->view->ShowLogin("Contraseña incorrecta");
+                    $this->view->showLogin("Contraseña incorrecta");
                 }
 
             }else{
-                $this->view->ShowLogin("El usuario no existe");
+                $this->view->showLogin("El usuario no existe");
                 
             }
         }

@@ -22,13 +22,13 @@
         }
 
         function indoor(){
-            $jugadoresVoley = $this->model->GetJugadores();
-            $posiciones = $this->model->GetPosiciones();
+            $jugadoresVoley = $this->model->getJugadores();
+            $posiciones = $this->model->getPosiciones();
             $this->indoorView->showIndoor($jugadoresVoley,$posiciones,$this->session);
         }
 
         function home(){
-           $this->homeView->ShowHome($this->session);
+           $this->homeView->showHome($this->session);
         }
 
         function eliminarJugador($params = null){
@@ -44,8 +44,8 @@
 
         function detalleJugador($params = null){
             $id = $params[':ID'];
-            $jugador = $this->model->GetJugador($id);
-            $posiciones = $this->model->GetPosiciones();
+            $jugador = $this->model->getJugador($id);
+            $posiciones = $this->model->getPosiciones();
             $this->indoorView->showDetalleJugador($jugador,$posiciones,$this->session);
         }
 
