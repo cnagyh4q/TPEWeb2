@@ -4,19 +4,19 @@ require_once "./libs/smarty/Smarty.class.php";
 
 class HomeView{
 
-        private $title;
-
+       
+        private $smarty;
+        
         function __construct(){
-            $this->title = "VOLLEY !!!";
+            
+            $this->smarty = new Smarty();
+            $this->smarty->assign('titulo', "VOLLEY");
+            $this->smarty->assign('url',BASE_URL);
         }
 
-        function showHome($session = null){
-            $smarty = new Smarty();
-            $smarty->assign('titulo', $this->title);
-            $smarty->assign('url',BASE_URL);
-            $smarty->assign('session',$session);                
-            $smarty->display('templates/home.tpl');
-
+        function showHome($session = null){             
+            $this->smarty->assign('session',$session);                
+            $this->smarty->display('templates/home.tpl');
         }
 
      

@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="icon" type="image/svg" href="image/icon/favicon.svg" />
     <script type="module" src="js/app.js"></script>
-    <title>VOLLEYBALL</title>
+    <title>{$titulo}</title>
 </head>
 
 <body>
@@ -21,7 +21,7 @@
             <button class="icon-menu" id="iconMenu">
                 &#9776;
             </button>
-            <h1>VOLLEYBALL</h1>
+            <h1>{$titulo}</h1>
         </header>
         <nav class="menu" id="menu">
             <button id="btn-home">HOME</button>
