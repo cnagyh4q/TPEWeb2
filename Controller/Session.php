@@ -12,7 +12,11 @@ class Session
 
     public function __construct($email = null, $rol = null)
     {
-        session_start();
+
+        if (session_status() != PHP_SESSION_ACTIVE){
+            session_start();
+            
+        }
 
 
         if (isset($email) && isset($rol)) {
@@ -25,6 +29,7 @@ class Session
 
     function validSession()
     {
+      
 
         if (!isset($_SESSION["EMAIL"])) {
             return false;

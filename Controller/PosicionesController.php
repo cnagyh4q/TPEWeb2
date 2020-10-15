@@ -69,8 +69,8 @@
         function editarPosicion($params = null){
             if ($this->session->validSession() && $this->session->isAdmin()){
                 $id= $params[':ID'];
-                $posicion = $this->model->GetPosicion($id);
-                $this->posicionesView->EditarPosicion($posicion,$this->session);
+                $posicion = $this->model->getPosicion($id);
+                $this->posicionesView->editarPosicion($posicion,$this->session);
             
             }
             else{
@@ -82,7 +82,9 @@
         function editarPosicionDB($params = null){
             if ($this->session->validSession() && $this->session->isAdmin()){
                     $id= $params[':ID'];
+                    if (isset($_POST['nombre'])){
                     $this->model->editarPosicion($id,$_POST['nombre']);
+                    }
                     $this->homeView->ShowHome($this->session);
                 }
             else{

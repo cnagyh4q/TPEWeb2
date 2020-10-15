@@ -10,13 +10,13 @@ class JugadorModel{
     }
 
     function getJugadores(){
-        $sentencia = $this->db->prepare("SELECT * FROM jugador ORDER BY numero"   );
+        $sentencia = $this->db->prepare("SELECT j.* , p.nombre as posicion FROM jugador as j join posicion as p on p.id = j.id_posicion ORDER BY numero" );
         $sentencia->execute();
         return $sentencia->fetchAll(PDO::FETCH_OBJ);
     }
     
     function getJugador($id){
-        $sentencia = $this->db->prepare("SELECT * FROM jugador WHERE id=? ");
+        $sentencia = $this->db->prepare("SELECT j.* , p.nombre as posicion FROM jugador as j join posicion as p on p.id = j.id_posicion WHERE j.id=? ");
         $sentencia->execute(array($id));
         return $sentencia->fetch(PDO::FETCH_OBJ);
     }
@@ -26,12 +26,7 @@ class JugadorModel{
         $sentencia->execute(array($id));
     }
 
-    function getPosiciones(){
-        $sentencia = $this->db->prepare("SELECT * FROM posicion");
-        $sentencia->execute();
-        return $sentencia->fetchAll(PDO::FETCH_OBJ);
-    }
-
+ 
     function insertarJugador($numero,$posicion,$nombre,$edad,$altura){
        
         $sentencia = $this->db->prepare("INSERT INTO jugador(numero,id_posicion,nombre,edad,altura) VALUES (?,?,?,?,?)");

@@ -48,11 +48,10 @@
                     {foreach from=$jugadores_voley item=jugador }
                     <tr id="jugador{$jugador->id}">
                         <td>{$jugador->numero}</td>
-                        {foreach from=$posiciones item=posicion}
-                        {if $jugador->id_posicion eq $posicion->id}
-                        <td>{$posicion->nombre}</td>
-                        {/if}
-                        {/foreach}
+                        {* esto hay que acomodarlo y traerlo con un join *}
+                        
+                        <td>{$jugador->posicion}</td>
+                        
                         <td>{$jugador->nombre}</td>
                         <td><a href="detalle/{$jugador->id}" class="fa fa-list-alt" aria-hidden="true" /></td>
                         {if isset($session) && $session->isAdmin()}

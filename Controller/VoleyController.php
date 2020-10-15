@@ -3,6 +3,7 @@
     require_once "./View/HomeView.php";
     require_once "./View/IndoorView.php";
     require_once "./Model/JugadorModel.php";
+    require_once "./Model/PosicionesModel.php";
     require_once "./Controller/Session.php";
 
     class VoleyController{
@@ -10,6 +11,7 @@
         private $homeView;
         private $indoorView;
         private $model;
+        private $modelposicion;
         private $session;
         private $login;
 
@@ -19,11 +21,12 @@
             $this->model = new JugadorModel();
             $this->session = new Session();
             $this->login = new LoginView();
+            $this->modelposicion= new PosicionesModel();
         }
 
         function indoor(){
             $jugadoresVoley = $this->model->getJugadores();
-            $posiciones = $this->model->getPosiciones();
+            $posiciones = $this->modelposicion->getPosiciones();
             $this->indoorView->showIndoor($jugadoresVoley,$posiciones,$this->session);
         }
 
@@ -45,16 +48,15 @@
         function detalleJugador($params = null){
             $id = $params[':ID'];
             $jugador = $this->model->getJugador($id);
-            $posiciones = $this->model->getPosiciones();
-            $this->indoorView->showDetalleJugador($jugador,$posiciones,$this->session);
+            $this->indoorView->showDetalleJugador($jugador,$this->session);
         }
 
 
         function editarJugador($params=null){
             if ($this->session->validSession() && $this->session->isAdmin()){
                 $id= $params[':ID'];
-                $jugador = $this->model->GetJugador($id);
-                $posiciones = $this->model->GetPosiciones();
+                $jugador = $this->model->getJugador($id);
+                $posiciones = $this->modelposicion->getPosiciones();
                 $this->indoorView->showModificarJugador($jugador,$posiciones,$this->session);
             }
             else{
@@ -65,8 +67,10 @@
         function editarJugadorConID($params = null){
             if ($this->session->validSession() && $this->session->isAdmin()){
                 $id= $params[':ID'];
+                if( isset($_POST['selectPosiciones']) && isset($_POST['nombre']) 
+                    && isset($_POST['edad']) && isset($_POST['numero']) && isset($_POST['altura'])){ 
                 $this->model->editarJugador($id,$_POST['numero'],$_POST['selectPosiciones'],$_POST['nombre'],$_POST['edad'],$_POST['altura']);
-                
+                }
                 $this->indoorView->showIndoorLocation();
             }
             else{
@@ -76,7 +80,7 @@
 
         function addJugador(){
             if ($this->session->validSession() && $this->session->isAdmin()){
-                $posiciones = $this->model->getPosiciones();
+                $posiciones = $this->modelposicion->getPosiciones();
                 $this->indoorView->showAddJugador($posiciones , $this->session);
             }
             else{
@@ -105,4 +109,3 @@
         }
 
     }
-?>
