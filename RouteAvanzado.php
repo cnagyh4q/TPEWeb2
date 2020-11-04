@@ -2,6 +2,7 @@
     require_once 'Controller/VoleyController.php';
     require_once 'Controller/LoginController.php';
     require_once 'Controller/PosicionesController.php';
+    require_once 'Controller/RegistroController.php';
     require_once 'RouterClass.php';
     
     // CONSTANTES PARA RUTEO
@@ -30,6 +31,8 @@
     $r->addRoute("login","GET","LoginController","login");
     $r->addRoute("logout","GET","LoginController","logout");
     $r->addRoute("login","POST","LoginController","verificarUsuario");
+    $r->addRoute("registrar","GET","RegistroController","registrarUsuario");
+    $r->addRoute("registrar","POST","RegistroController","agregarUsuario");
 
    
     $r->addRoute("editarPosiciones","GET","PosicionesController","panelEdicionPos");

@@ -4,21 +4,19 @@
 </div>
 
   <div id="LoginContent" class="LoginContent">     
-    <!-- Login Form -->
-    {if $message}
+      {if $message}
       <div class="alert alert-danger" role="alert">
       {$message}
     </div>  
     {/if}
     
-    <form action="login" method="post">
+    <form action="registrar" method="post">
+      <input type="text" id="nombre"  name="nombre" placeholder="nombre"/>
       <input type="email" id="login"  name="email" placeholder="mail"/>
       <input type="password" id="password"  name="password" placeholder="password"/>
-      <input type="submit"  class="buttonAceptar" value="Ingresar"/>
+      <input type="submit"  class="buttonAceptar" value="Registrarse"/>
     </form>
-    <form action="registrar">
-    <button>registrar</button>
-    </form>
+  
   </div>
 
 {include file="footer.tpl"}

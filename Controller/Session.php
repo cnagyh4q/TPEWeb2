@@ -47,7 +47,7 @@ class Session
 
     function isAdmin(){
 
-        if (isset($_SESSION["ROL"]) && $_SESSION["ROL"] == "Admin"){
+        if (isset($_SESSION["ROL"]) && $_SESSION["ROL"] == "ADMINISTRADOR"){
             return true;
         }
         return false;
