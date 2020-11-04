@@ -44,6 +44,11 @@ class Session
         }
     }
 
+    function getEmail(){
+        
+        return $_SESSION["EMAIL"];
+    }
+
 
     function isAdmin(){
 

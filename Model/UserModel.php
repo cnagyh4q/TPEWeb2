@@ -13,7 +13,23 @@ class UserModel{
         $sentencia->execute(array($user));
         return $sentencia->fetch(PDO::FETCH_OBJ);
     }
+
+    function getAllUsers(){
+        $sentencia = $this->db->prepare("SELECT u.*,r.permiso  FROM usuario as u join rol as r on u.id_rol = r.id " );
+        $sentencia->execute(array());
+        return $sentencia->fetchAll(PDO::FETCH_OBJ);
+    }
     
+    function editarRolUsuario ($id , $rol){
+        $sentencia = $this->db->prepare("UPDATE usuario SET id_rol=? WHERE id=? ");
+        $sentencia->execute(array($rol,$id));
+        
+    }
+
+    function deleteUsuario($id){
+        $sentencia = $this->db->prepare("DELETE FROM usuario WHERE id=?");
+        $sentencia->execute(array($id));
+    }
 
     function addUser($nombre , $user , $pass , $rol="2"){        
         $sentencia = $this->db->prepare("INSERT INTO usuario(nombre, email , password , id_rol ) values (?,?,?,?)");

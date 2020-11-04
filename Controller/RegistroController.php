@@ -25,13 +25,19 @@ require_once "./Controller/Session.php";
    
     } 
 
+  
+
     function agregarUsuario(){
 
         if( isset($_POST['nombre']) && !empty($_POST['nombre']) && isset($_POST['email']) && !empty($_POST['email']) 
-                    && isset($_POST['password']) && !empty($_POST['passwprd']) ){
-                         $clave_encriptada = password_hash ($_POST['password'] , PASSWORD_DEFAULT );  
-                   $this->model->addUser($_POST['nombre'] , $_POST['email'] ,$clave_encriptada);
+                    && isset($_POST['password']) && !empty($_POST['password']) ){
 
+                $clave_encriptada = password_hash ($_POST['password'] , PASSWORD_DEFAULT );  
+                $this->model->addUser($_POST['nombre'] , $_POST['email'] ,$clave_encriptada);
+                    
+                $this->session = new Session($_POST['email'] , 'INVITADO');
+                header("Location: ".BASE_URL."home");
+                $this->viewHome->showHome($this->session);
         
         } 
         

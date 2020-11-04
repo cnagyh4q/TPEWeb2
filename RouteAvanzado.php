@@ -4,6 +4,7 @@
     require_once 'Controller/PosicionesController.php';
     require_once 'Controller/RegistroController.php';
     require_once 'RouterClass.php';
+    require_once 'Controller/UserController.php';
     
     // CONSTANTES PARA RUTEO
     define("BASE_URL", 'http://'.$_SERVER["SERVER_NAME"].':'.$_SERVER["SERVER_PORT"].dirname($_SERVER["PHP_SELF"]).'/');
@@ -33,6 +34,10 @@
     $r->addRoute("login","POST","LoginController","verificarUsuario");
     $r->addRoute("registrar","GET","RegistroController","registrarUsuario");
     $r->addRoute("registrar","POST","RegistroController","agregarUsuario");
+    $r->addRoute("editUsers","GET","UserController","showUsuarios");
+    $r->addRoute("editUser/:ID","GET","UserController","showEditUsuario");
+    $r->addRoute("editUser/:ID","POST","UserController","editUsuario");
+    $r->addRoute("deleteUser/:ID","GET","UserController","deleteUsuario");
 
    
     $r->addRoute("editarPosiciones","GET","PosicionesController","panelEdicionPos");
