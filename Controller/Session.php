@@ -28,8 +28,7 @@ class Session
 
 
     function validSession()
-    {
-      
+    {     
 
         if (!isset($_SESSION["EMAIL"])) {
             return false;

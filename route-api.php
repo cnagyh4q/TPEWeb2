@@ -18,7 +18,7 @@
 
 
     //Elimina un comentario por id comentario
-    $r->addRoute("comentarios/:ID","DELET","ComentarioController","deletComentarios");
+    $r->addRoute("comentarios/:ID","DELETE","ComentarioController","deletComentarios");
 
 
     //Agrega un comentario

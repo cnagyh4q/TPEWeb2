@@ -258,13 +258,26 @@ form select {
 .detalleContent{
     min-height: 400px;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    flex-direction: row;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
 }
 
 .card {
-    margin: auto;
-    
+    margin: 1rem;
+    width: 25rem;
+    height: 18rem;    
+}
+
+.comentarios{
+    margin: 1rem;
+    max-width: 25rem;
+    height: 18rem;
+    overflow-y: scroll;
+ }
+
+.list-group-item{
+    max-width: 25rem;
 }
 
 @media only screen and (min-width:600px) {

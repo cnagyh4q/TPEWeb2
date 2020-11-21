@@ -1,7 +1,10 @@
 {include file="header.tpl"}
 
-<div class="detalleContent">
-    <div class="card" style="width: 18rem;">
+
+<div id = {$jugador->id} class="detalleContent">
+
+    <div  class="card" >
+    <h2> Detalle Jugador </h2>
         <ul class="list-group list-group-flush">
             <li class="list-group-item">Numero: {$jugador->numero}</li>
             <li class="list-group-item"> Posicion: {$jugador->posicion}</li>
@@ -15,15 +18,11 @@
                 Edad: {$jugador->edad} Años
             </li>
         </ul>
-    </div>
-    <a class="buttonVolver"  href="indoor">Volver</a>
+    </div> 
+    {include file="Vue/Comentarios.tpl"}   
+   
+    <script src="js/comentario.js"></script>
 </div>
-
-
-
-
-
-
-
+<a class="buttonVolver"  href="indoor">Volver</a>
 
 {include file="footer.tpl"}

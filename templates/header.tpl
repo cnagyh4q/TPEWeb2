@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="icon" type="image/svg" href="image/icon/favicon.svg" />
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
     <script type="module" src="js/app.js"></script>
     <title>{$titulo}</title>
 </head>
