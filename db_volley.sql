@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 04-11-2020 a las 01:30:27
+-- Tiempo de generación: 23-11-2020 a las 18:51:45
 -- Versión del servidor: 10.1.37-MariaDB
 -- Versión de PHP: 7.2.12
 
@@ -35,6 +35,23 @@ CREATE TABLE `comentario` (
   `puntaje` enum('1','2','3','4','5') COLLATE utf8_spanish_ci NOT NULL,
   `comentario` text COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `comentario`
+--
+
+INSERT INTO `comentario` (`id`, `id_usuario`, `id_jugador`, `puntaje`, `comentario`) VALUES
+(4, 1, 25, '3', 'Este parece un limon'),
+(5, 1, 29, '1', 'sdfsdfsd'),
+(41, 1, 29, '1', 'ggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg'),
+(42, 1, 29, '1', 'ggggggggggggggggggggggggggggggggggggggggggggggggggggggg'),
+(43, 1, 29, '1', 'vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv'),
+(44, 1, 29, '1', 'vvvvvvvvvvvvvvvvvvvvvvv'),
+(45, 1, 29, '1', 'ñññññññññññññññññññññ'),
+(46, 1, 29, '1', 'mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm'),
+(47, 1, 29, '1', '6544444'),
+(65, 1, 22, '2', 'cdscsd'),
+(66, 1, 22, '1', 'fdgdfgfg');
 
 -- --------------------------------------------------------
 
@@ -117,6 +134,15 @@ CREATE TABLE `usuario` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
+-- Volcado de datos para la tabla `usuario`
+--
+
+INSERT INTO `usuario` (`id`, `nombre`, `email`, `password`, `id_rol`) VALUES
+(1, 'Christian', 'christiannagy98@gmail.com', '$2y$10$Q/IMK1UqjQ0Y2VY/N8I5culauLlsgUhFoR0Iz2N.eU6Vq7z7wXCTO', 1),
+(2, 'Matias', 'cdcd@fdf.com', '$2y$10$LgcKVBjvPPu56z805VVBl.znuV3M/Glio2qXUZRteoTKhR/j7T7gS', 2),
+(3, 'Matias', 'tomasmat_12@hotmail.com', '$2y$10$zfmEgMCwbd4SHS/uma.YY.sKbx/IhmRRatNZAu4OREAAZCsUDW242', 2);
+
+--
 -- Índices para tablas volcadas
 --
 
@@ -165,7 +191,7 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `comentario`
 --
 ALTER TABLE `comentario`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
 
 --
 -- AUTO_INCREMENT de la tabla `jugador`
@@ -177,7 +203,7 @@ ALTER TABLE `jugador`
 -- AUTO_INCREMENT de la tabla `posicion`
 --
 ALTER TABLE `posicion`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT de la tabla `rol`
@@ -189,7 +215,7 @@ ALTER TABLE `rol`
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Restricciones para tablas volcadas
