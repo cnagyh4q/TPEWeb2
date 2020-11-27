@@ -1,6 +1,6 @@
 <?php
 
-require_once "ComentarioModel.php";
+require_once "./Model/ComentarioModel.php";
 require_once "ComentarioView.php";
 require_once "./Controller/Session.php";
 require_once "./Model/UserModel.php";
