@@ -14,6 +14,7 @@
         private $modelposicion;
         private $session;
         private $login;
+        private $default;
 
         function __construct (){
             $this->indoorView = new IndoorView();
@@ -22,12 +23,45 @@
             $this->session = new Session();
             $this->login = new LoginView();
             $this->modelposicion= new PosicionesModel();
+            $this->default= 2;
         }
 
         function indoor(){
+            
             $jugadoresVoley = $this->model->getJugadores();
-            $posiciones = $this->modelposicion->getPosiciones();
-            $this->indoorView->showIndoor($jugadoresVoley,$posiciones,$this->session);
+            $cantidadTotal = count($jugadoresVoley);
+            $cantMostrar = $this->default;
+            $nroPag= 0;
+            
+            if ( isset($_GET['pag'])  && isset($_GET['cant']) && !empty($_GET['cant']) && !empty($_GET['pag']) ){
+                $paginaLimpia =   $_GET['pag'];  
+                $cantMostrar = $_GET['cant'];
+
+                if ($paginaLimpia<1  || $cantMostrar <1 ){
+                    $paginaLimpia=1;
+                    $cantMostrar= $this->default;
+                    $totalPaginas=1;
+                    header("Location: ".BASE_URL."indoor/?pag=1&cant=".$this->default);
+                }
+                else{
+                    if ($cantMostrar>$cantidadTotal  ){
+                        $totalPaginas=1;
+                    }
+                    else{
+                        $totalPaginas = ceil($cantidadTotal/$cantMostrar);
+                    }
+                }    
+                $nroPag = ($paginaLimpia - 1) * $cantMostrar;                
+                $jugadoresVoley = $this->model->getJugadoresPaginacion($nroPag,$cantMostrar);
+
+                $posiciones = $this->modelposicion->getPosiciones();
+                $this->indoorView->showIndoor($jugadoresVoley,$posiciones,$this->session,$paginaLimpia,$cantMostrar,$totalPaginas);
+            
+            }
+            else {
+                    header("Location: ".BASE_URL."indoor/?pag=1&cant=".$this->default);
+            }
+            
         }
 
         function home(){

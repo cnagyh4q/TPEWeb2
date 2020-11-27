@@ -64,6 +64,24 @@
                     {/foreach}
                 </tbody>
             </table>
+            <nav aria-label="...">
+                <ul class="pagination pagination-lg">
+                    {for $i=1 to ($totalPaginas) }
+                  
+                    {if $i == $pagina }
+                    <li class="page-item disabled">
+                        <a class="page-link " href="indoor/?pag={$i}&cant={$cantMostrar}" tabindex="-1">{$i}</a>
+                    </li>
+                    
+                    {else}
+                        <li class="page-item ">
+                        <a class="page-link " href="indoor/?pag={$i}&cant={$cantMostrar}" >{$i}</a>
+                    </li>
+                    {/if}
+                    {/for}
+                </ul>
+                <label>Elegir cantidad a Mostrar :</label><input id="inputCantMostrar" class="col-md-1" type="number" min="1" pattern="^[0-9]+" value="{$cantMostrar}"   />
+            </nav>
             {if isset($session) && $session->isAdmin()}
             <div>
                 <a class="btn btn-outline-primary" href="editarPosiciones"> Administrar Posiciones</a>

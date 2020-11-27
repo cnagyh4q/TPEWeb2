@@ -11,6 +11,15 @@ function edit(id) {
 }
 
 document.querySelector("#filtro").addEventListener("change", filtrar);
+document.querySelector("#inputCantMostrar").addEventListener("change", modificarURL);
+
+
+
+
+function modificarURL(event) {
+  window.location.href = "indoor/?pag=1&cant="+event.target.value; 
+}
+
 
 function filtrar() {
   let valor = document.querySelector("#filtro").value;

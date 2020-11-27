@@ -14,7 +14,6 @@
     $r->addRoute("home", "GET", "VoleyController", "home");
 
     $r->addRoute("indoor", "GET", "VoleyController", "indoor");
-   
     
     $r->addRoute("agregarJ","GET","VoleyController","addJugador");
     $r->addRoute("agregar","POST","VoleyController","agregarJugador");

@@ -14,9 +14,12 @@ class IndoorView{
           
         }
 
-        function showIndoor($jugadores,$posiciones, $session = null){
+        function showIndoor($jugadores,$posiciones, $session = null,$nroPag,$cantMostrar,$totalPaginas){
           
             $this->smarty->assign('jugadores_voley', $jugadores);
+            $this->smarty->assign('pagina', $nroPag);
+            $this->smarty->assign('cantMostrar', $cantMostrar);
+            $this->smarty->assign('totalPaginas', $totalPaginas);
             $this->smarty->assign('session', $session);
             $this->smarty->assign('posiciones',$posiciones);
             $this->smarty->display('templates/indoor.tpl');
