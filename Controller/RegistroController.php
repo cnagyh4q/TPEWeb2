@@ -10,8 +10,7 @@ require_once "./Controller/Session.php";
 
     private  $view;
     private  $viewHome;
-    private  $model;
-    private  $session;    
+    private  $model;       
 
     function __construct (){
         $this->view = new RegistroView();
@@ -35,9 +34,8 @@ require_once "./Controller/Session.php";
                 $clave_encriptada = password_hash ($_POST['password'] , PASSWORD_DEFAULT );  
                 $this->model->addUser($_POST['nombre'] , $_POST['email'] ,$clave_encriptada);
                     
-                $this->session = new Session($_POST['email'] , 'INVITADO');
-                header("Location: ".BASE_URL."home");
-                $this->viewHome->showHome($this->session);
+                header("Location: ".BASE_URL."login");
+                
         
         } 
         

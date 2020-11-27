@@ -51,12 +51,7 @@
 
     $r->addRoute("eliminarPosicion/:ID","GET","PosicionesController","eliminarPosicionDB");
     
-    
-    //$r->addRoute("encriptar","GET","LoginController","encriptar");
-    
-     
-
-    //Ruta por defecto.
+   //Ruta por defecto.
     $r->setDefaultRoute("VoleyController", "home");
 
     $r->route($_GET['action'], $_SERVER['REQUEST_METHOD']);

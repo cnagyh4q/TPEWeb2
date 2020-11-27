@@ -10,7 +10,7 @@ class UserView{
             $this->title = "Usuarios ";
         }
 
-        function showUsuarios($usuarios = null,$session = null,$roles = null, $editando = null){
+        function showUsuarios($error = '' ,$usuarios = null,$session = null,$roles = null, $editando = null){
             
             $smarty = new Smarty();
             $smarty->assign('titulo', $this->title);
@@ -18,6 +18,7 @@ class UserView{
             $smarty->assign('editando', $editando);
             $smarty->assign('roles', $roles);
             $smarty->assign('usuarios',$usuarios);
+            $smarty->assign('error',$error);
             $smarty->assign('url',BASE_URL);
             $smarty->display('templates/administrarUsuarios.tpl');
         }

@@ -22,13 +22,13 @@ class UserModel{
     
     function editarRolUsuario ($id , $rol){
         $sentencia = $this->db->prepare("UPDATE usuario SET id_rol=? WHERE id=? ");
-        $sentencia->execute(array($rol,$id));
+        return $sentencia->execute(array($rol,$id));
         
     }
 
     function deleteUsuario($id){
         $sentencia = $this->db->prepare("DELETE FROM usuario WHERE id=?");
-        $sentencia->execute(array($id));
+        return $sentencia->execute(array($id));
     }
 
     function addUser($nombre , $user , $pass , $rol="2"){        

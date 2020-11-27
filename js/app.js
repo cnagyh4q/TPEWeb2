@@ -1,83 +1,44 @@
-import {default as home} from './form.js';
 
 document.addEventListener("DOMContentLoaded", function () {
-    
-    
-    document.querySelector("#iconMenu").addEventListener("click", mostrarMenu);
+  document.querySelector("#iconMenu").addEventListener("click", mostrarMenu);
 
-    function mostrarMenu() {
-        let menu = document.querySelector("#menu");
-        if (menu.className === "menu") {
-            menu.className += " menu-responsive";
-        } else {
-            menu.className = "menu";
-        }
+  function mostrarMenu() {
+    let menu = document.querySelector("#menu");
+    if (menu.className === "menu") {
+      menu.className += " menu-responsive";
+    } else {
+      menu.className = "menu";
     }
+  }
 
+  function cargarPagina(url) {
+    location.href = url;
+  }
 
-  
+  document.querySelector("#btn-home").addEventListener("click", (event) => {
+    document.querySelector("#btn-indoor").classList.remove("actual");
+    event.currentTarget.classList.add("actual");
+    cargarPagina("home");
+  });
 
-    function cargarPagina(url) {
-                
-        location.href = url;
-                // if (url === "indoor"){
-                //    // window.history.pushState("" , "Indoor" , url);
-                    
-                    
-                // }
+  document.querySelector("#btn-indoor").addEventListener("click", (event) => {
+    document.querySelector("#btn-home").classList.remove("actual");
+    event.currentTarget.classList.add("actual");
+    cargarPagina("indoor");
+  });
 
-                // if (url === "home"){
-                //      window.history.pushState("" , "VolleyBall" , url);
-                    
-                // }
-
-                // if (url === "beachvolley"){
-                //     window.history.pushState("" , "Beach VolleyBall" , url);
-                    
-                // }
-
-
-
-    }
-
-
-
-    document.querySelector("#btn-home").addEventListener("click", event => {
-        // document.querySelector("#btn-beach").classList.remove("actual");
-        document.querySelector("#btn-indoor").classList.remove("actual");
-        event.currentTarget.classList.add("actual");
-        cargarPagina("home");
-
-
+  try {
+    document.querySelector("#btn-login").addEventListener("click", (event) => {
+      cargarPagina("login");
+    });
+  } catch {
+    document.querySelector("#btn-logout").addEventListener("click", (event) => {
+      cargarPagina("logout");
     });
 
-    // document.querySelector("#btn-beach").addEventListener("click", event => {
-    //     document.querySelector("#btn-home").classList.remove("actual");
-    //     document.querySelector("#btn-indoor").classList.remove("actual");
-    //     event.currentTarget.classList.add("actual");
-    //     cargarPagina("beachvolley");
-
-
-    // });
-
-
-    document.querySelector("#btn-indoor").addEventListener("click", event => {
-        document.querySelector("#btn-home").classList.remove("actual");
-        // document.querySelector("#btn-beach").classList.remove("actual");
-        event.currentTarget.classList.add("actual");
-        cargarPagina("indoor");
-
-
-
-
-    });
-
-
-    document.querySelector("#btn-login").addEventListener("click", event => {
-         cargarPagina("login");
-    });
-
-
-    //cargarPagina("home");
-
+    document.querySelector("#btn-users").addEventListener("click", (event) => {
+           cargarPagina("editUsers");
+      });
+    
+  }
 });

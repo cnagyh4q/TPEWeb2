@@ -1,6 +1,6 @@
-<?php   
+<?php
 
-require_once "./View/HomeView.php";
+require_once "./View/LoginView.php";
 require_once "./View/RegistroView.php";
 require_once "./Model/UserModel.php";
 require_once "./Model/RolModel.php";
@@ -9,64 +9,83 @@ require_once "./View/UserView.php";
 
 
 
-class UserController {
+class UserController
+{
 
     private  $view;
-    private  $viewHome;
+    private  $viewLogin;
     private  $modelUser;
     private  $modelRol;
-    private  $session;    
+    private  $session;
 
-    function __construct (){
+    function __construct()
+    {
         $this->view = new UserView();
-        $this->viewHome = new HomeView();
+        $this->viewLogin = new LoginView();
         $this->modelUser = new UserModel();
         $this->modelRol = new RolModel();
-        $this->session = new Session(); 
+        $this->session = new Session();
     }
 
-    function registrarUsuario(){
-        $this->view->showRegistro();
-   
-    } 
 
-    function showUsuarios(){
-        $usuarios = $this->modelUser->getAllUsers();
-        $this->view->showUsuarios($usuarios,$this->session);
-   
-    }
-    
-    function editUsuario($params ){
-        $id = $params[':ID'];
-        $rol = $this->modelRol->getRolById($_POST['selectRoles']);
-        if ( isset($rol) && !empty($rol) ){   
-            $this->modelUser->editarRolUsuario($id,$rol->id);
-            $this->showUsuarios();
+
+    function showUsuarios($message = '')
+    {
+        if ($this->session->validSession() && $this->session->isAdmin()){
+            $usuarios = $this->modelUser->getAllUsers();
+           $this->view->showUsuarios($message , $usuarios, $this->session);
+        } else {
+            $this->viewLogin->showLogin();
         }
-        else
-            {echo ("error");}
-                //  Mostratar Error 
-    } 
+    }
+        
 
-    function deleteUsuario($params){
-        $id = $params[':ID'];
-        if ( isset($id) && !empty($id) ){ 
-            var_dump($id);  
-            $this->modelUser->deleteUsuario($id);
-            $this->showUsuarios();
+    function editUsuario($params)
+    {
+        if ($this->session->validSession() && $this->session->isAdmin()) {
+            $id = $params[':ID'];
+            $rol = $this->modelRol->getRolById($_POST['selectRoles']);
+            if (isset($id) && !empty($id) && isset($rol) && !empty($rol)) {
+                if ($this->modelUser->editarRolUsuario($id, $rol->id)) {
+                    $this->showUsuarios();
+                } else {
+                    $this->showUsuarios("Error al editar el Usuario");
+                }
+            } else {
+                $this->showUsuarios("Parametros invalidos");
+            }
+        } else {
+            $this->viewLogin->showLogin();
         }
-        else    
-            $this->showUsuarios("error");
     }
 
-    function showEditUsuario($params = null){
-        $id = $params[':ID'];
-        $usuarios = $this->modelUser->getAllUsers();
-        $roles = $this->modelRol->getAllRols();
-        $this->view->showUsuarios($usuarios,$this->session,$roles,$id);
-   
-    }  
+    function deleteUsuario($params)
+    {
+        if ($this->session->validSession() && $this->session->isAdmin()) {
+            $id = $params[':ID'];
+            if (isset($id) && !empty($id)) {
+                if ($this->modelUser->deleteUsuario($id)) {
+                    $this->showUsuarios();
+                } else {
+                    $this->showUsuarios("Error al eliminar el usuario");
+                }
+            } else {
+                $this->showUsuarios("Parametro id necesario");
+            }
+        } else {
+            $this->viewLogin->showLogin();
+        }
+    }
 
-} 
-
-?>
+    function showEditUsuario($params = null)
+    {
+        if ($this->session->validSession() && $this->session->isAdmin()) {
+            $id = $params[':ID'];
+            $usuarios = $this->modelUser->getAllUsers();
+            $roles = $this->modelRol->getAllRols();
+            $this->view->showUsuarios($usuarios, $this->session, $roles, $id);
+        } else {
+            $this->viewLogin->showLogin();
+        }
+    }
+}

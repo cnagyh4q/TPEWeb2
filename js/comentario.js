@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
   document.querySelector("#add-comentar").addEventListener("submit", (e) => {
     e.preventDefault();
     const comentario = {
-      comentario: document.querySelector('input[name="comentario"]').value,
+      comentario: document.querySelector('textarea[name="comentario"]').value,
       puntaje: document.querySelector('select[name="puntaje"]').value,
     };
 
@@ -59,19 +59,14 @@ function eliminarComentario(id) {
   })
     .then((response) => response.json())
     .then( ()=> {
-
       let elementoAEliminar = "";
       for (let element of app.comentarios) {
           if (element.id === id) {
               elementoAEliminar = element;
   
-          }
-  
-      }
-  
+          }  
+      }  
       app.comentarios.splice(app.comentarios.indexOf(elementoAEliminar), 1);
-
-
     })
     .catch((e) => console.error(e));
 }

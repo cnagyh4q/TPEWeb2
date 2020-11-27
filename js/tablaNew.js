@@ -11,6 +11,9 @@ function edit(id) {
 }
 
 document.querySelector("#filtro").addEventListener("change", filtrar);
+
+
+
 document.querySelector("#inputCantMostrar").addEventListener("change", modificarURL);
 
 

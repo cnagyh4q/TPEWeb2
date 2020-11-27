@@ -9,11 +9,11 @@
             :data-id-com="com.id" 
             class="list-group-item">             
             {{com.nombreUsario}} - {{ com.comentario }} - {{ com.puntaje}} 
-        {/literal}
+{/literal}
             {if isset($session) && $session->isAdmin()}   
                 {literal}
-              <a v-on:click="eliminar(com.id)" class="fa fa-ban delet"></a>         
-            {/literal}        
+                     <a v-on:click="eliminar(com.id)" class="fa fa-ban delet"></a>         
+                {/literal}        
             {/if}
          </li>         
 
@@ -21,7 +21,7 @@
         
 {if isset($session) && $session->validSession()}
     <form id="add-comentar">
-        <input type="text" name="comentario" placeholder="Comentar" required/> 
+        <textarea class="form-control" name="comentario" placeholder="Comentar"  rows="3" required></textarea>
         <select name="puntaje">
             <option value="1">1</option>
             <option value="2">2</option>

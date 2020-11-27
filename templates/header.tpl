@@ -28,10 +28,13 @@
             <button id="btn-home">HOME</button>
             <button id="btn-indoor">INDOOR</button>
             {if isset($session) }
+             {if $session->isAdmin()}
+                    <button id="btn-users">USUARIOS</a>
+              {/if}
             {if !$session->validSession()}
             <button id="btn-login">LOGIN</button>
             {else}
-            <a href="logout" id="btn-logout">LOGOUT</a>
+                <button id="btn-logout">LOGOUT</a>
             {/if}
             {/if}
 

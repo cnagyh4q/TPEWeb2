@@ -5,6 +5,11 @@
     <article class="conteiner-left">
 
         <h3>Usuarios</h3>
+        {if $error}
+            <div class="alert alert-danger" role="alert">
+            {$error}
+        {/if}
+
         <section class="table-responsive">
             <table class="table">
                 <thead class="thead-dark">
