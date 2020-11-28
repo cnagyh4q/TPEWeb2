@@ -5,7 +5,7 @@ class Session
 {
 
 
-    private $timeOut = 60;   
+    private $timeOut = 360;   
 
     public function __construct($email = null, $rol = null )
     {

@@ -83,7 +83,7 @@ class UserController
             $id = $params[':ID'];
             $usuarios = $this->modelUser->getAllUsers();
             $roles = $this->modelRol->getAllRols();
-            $this->view->showUsuarios($usuarios, $this->session, $roles, $id);
+            $this->view->showUsuarios('',$usuarios, $this->session, $roles, $id);
         } else {
             $this->viewLogin->showLogin();
         }

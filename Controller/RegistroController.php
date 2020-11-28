@@ -10,7 +10,8 @@ require_once "./Controller/Session.php";
 
     private  $view;
     private  $viewHome;
-    private  $model;       
+    private  $model;
+    private  $session;       
 
     function __construct (){
         $this->view = new RegistroView();
@@ -32,14 +33,20 @@ require_once "./Controller/Session.php";
                     && isset($_POST['password']) && !empty($_POST['password']) ){
 
                 $clave_encriptada = password_hash ($_POST['password'] , PASSWORD_DEFAULT );  
-                $this->model->addUser($_POST['nombre'] , $_POST['email'] ,$clave_encriptada);
-                    
-                header("Location: ".BASE_URL."login");
+                $result = $this->model->addUser($_POST['nombre'] , $_POST['email'] ,$clave_encriptada);
+                 var_dump($result);
+                if ($result){
+                    $this->session = new Session($_POST['email'] , 'INVITADO');
+                    header("Location: ".BASE_URL."home");
+                    $this->viewHome->showHome($this->session);
+
+                }          
+               
                 
         
         } 
         
-        $this->viewHome->showHome();
+        $this->view->showRegistro("Datos invalidos");
 
     }
 

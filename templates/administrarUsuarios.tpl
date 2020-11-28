@@ -6,8 +6,9 @@
 
         <h3>Usuarios</h3>
         {if $error}
-            <div class="alert alert-danger" role="alert">
+            <div class="alert alert-danger" role="alert"> 
             {$error}
+            </div>
         {/if}
 
         <section class="table-responsive">
