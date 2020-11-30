@@ -37,13 +37,15 @@
     $r->addRoute("editUser/:ID","GET","UserController","showEditUsuario");
     $r->addRoute("editUser/:ID","POST","UserController","editUsuario");
     $r->addRoute("deleteUser/:ID","GET","UserController","deleteUsuario");
-
-   
+       
     $r->addRoute("editarPosiciones","GET","PosicionesController","panelEdicionPos");
     
 
     $r->addRoute("agregarPosicion","GET","PosicionesController","agregarPosicion");
     $r->addRoute("agregarPosicion","POST","PosicionesController","agregarPosicionDB");
+
+    $r->addRoute("agregarImagen/:ID","POST","ImagenController","agregarImagen");
+    $r->addRoute("eliminarImagen/:ID","GET","ImagenController","eliminarImagen");
 
     
     $r->addRoute("editarPosicion/:ID","GET","PosicionesController","editarPosicion");

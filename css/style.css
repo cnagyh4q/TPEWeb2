@@ -22,6 +22,7 @@ select:focus {
     top: 0px;
     background-color: white;
     border-radius: 10px;
+    z-index: 1;
 }
 
 header {
@@ -265,14 +266,14 @@ form select {
 
 .card {
     margin: 1rem;
-    width: 25rem;
-    height: 18rem;    
+    width: 25rem;  
+    height: min-content;
 }
 
 .comentarios{
     margin: 1rem;
     max-width: 25rem;
-    height: 18rem;
+    height: 15rem;
     overflow-y: scroll;
  }
 

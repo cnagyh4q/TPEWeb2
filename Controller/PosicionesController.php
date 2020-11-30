@@ -47,7 +47,8 @@
                         $this->model->insertarPosicion($_POST['nombre']);
                     
                     }
-                    $this->homeView->showHome($this->session);
+                    header("Location: " . $_SERVER['HTTP_REFERER']);
+                    //$this->homeView->showHome($this->session);
             }
             else{
                 $this->login->showLogin("Se requiere permisos");
@@ -97,7 +98,7 @@
             if ($this->session->validSession() && $this->session->isAdmin()){
                 $id= $params[':ID'];
                 $this->model->eliminarPosicion($id);
-                $this->homeView->showHome($this->session);
+                header("Location: " . $_SERVER['HTTP_REFERER']);
             }
             else{
                 $this->login->showLogin("Se requiere permisos");

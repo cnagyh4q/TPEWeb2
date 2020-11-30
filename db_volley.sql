@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 23-11-2020 a las 18:51:45
+-- Tiempo de generación: 30-11-2020 a las 02:49:21
 -- Versión del servidor: 10.1.37-MariaDB
 -- Versión de PHP: 7.2.12
 
@@ -51,7 +51,26 @@ INSERT INTO `comentario` (`id`, `id_usuario`, `id_jugador`, `puntaje`, `comentar
 (46, 1, 29, '1', 'mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm'),
 (47, 1, 29, '1', '6544444'),
 (65, 1, 22, '2', 'cdscsd'),
-(66, 1, 22, '1', 'fdgdfgfg');
+(68, 1, 22, '1', 'oiuuiiou'),
+(69, 1, 22, '1', '65465465465'),
+(70, 1, 22, '1', '65465'),
+(71, 1, 22, '1', '6546546545'),
+(72, 1, 22, '1', '5646565'),
+(73, 1, 22, '1', '65465465'),
+(74, 1, 22, '1', '65465');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `imagen`
+--
+
+CREATE TABLE `imagen` (
+  `id` int(11) NOT NULL,
+  `path` varchar(255) COLLATE utf8_spanish_ci NOT NULL,
+  `id_jugador` int(11) NOT NULL,
+  `descripcion` varchar(255) COLLATE utf8_spanish_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 -- --------------------------------------------------------
 
@@ -98,7 +117,8 @@ CREATE TABLE `posicion` (
 INSERT INTO `posicion` (`id`, `nombre`) VALUES
 (3, 'Central'),
 (14, 'Libero'),
-(15, 'Opuesto');
+(15, 'Opuesto'),
+(16, 'Punta Receptor');
 
 -- --------------------------------------------------------
 
@@ -128,7 +148,7 @@ INSERT INTO `rol` (`id`, `permiso`) VALUES
 CREATE TABLE `usuario` (
   `id` int(11) NOT NULL,
   `nombre` text NOT NULL,
-  `email` varchar(255) NOT NULL,
+  `email` varchar(90) NOT NULL,
   `password` text NOT NULL,
   `id_rol` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -139,8 +159,7 @@ CREATE TABLE `usuario` (
 
 INSERT INTO `usuario` (`id`, `nombre`, `email`, `password`, `id_rol`) VALUES
 (1, 'Christian', 'christiannagy98@gmail.com', '$2y$10$Q/IMK1UqjQ0Y2VY/N8I5culauLlsgUhFoR0Iz2N.eU6Vq7z7wXCTO', 1),
-(2, 'Matias', 'cdcd@fdf.com', '$2y$10$LgcKVBjvPPu56z805VVBl.znuV3M/Glio2qXUZRteoTKhR/j7T7gS', 2),
-(3, 'Matias', 'tomasmat_12@hotmail.com', '$2y$10$zfmEgMCwbd4SHS/uma.YY.sKbx/IhmRRatNZAu4OREAAZCsUDW242', 2);
+(3, 'Matias', 'tomasmat_12@hotmail.com', '$2y$10$zfmEgMCwbd4SHS/uma.YY.sKbx/IhmRRatNZAu4OREAAZCsUDW242', 1);
 
 --
 -- Índices para tablas volcadas
@@ -153,6 +172,13 @@ ALTER TABLE `comentario`
   ADD PRIMARY KEY (`id`),
   ADD KEY `FK_JUGADOR` (`id_jugador`),
   ADD KEY `FK_USUARIO` (`id_usuario`);
+
+--
+-- Indices de la tabla `imagen`
+--
+ALTER TABLE `imagen`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `FK_JUGADOR` (`id_jugador`);
 
 --
 -- Indices de la tabla `jugador`
@@ -181,6 +207,7 @@ ALTER TABLE `rol`
 --
 ALTER TABLE `usuario`
   ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `email` (`email`),
   ADD KEY `FK_ROL` (`id_rol`);
 
 --
@@ -191,7 +218,13 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `comentario`
 --
 ALTER TABLE `comentario`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
+
+--
+-- AUTO_INCREMENT de la tabla `imagen`
+--
+ALTER TABLE `imagen`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `jugador`
@@ -203,7 +236,7 @@ ALTER TABLE `jugador`
 -- AUTO_INCREMENT de la tabla `posicion`
 --
 ALTER TABLE `posicion`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT de la tabla `rol`
@@ -227,6 +260,12 @@ ALTER TABLE `usuario`
 ALTER TABLE `comentario`
   ADD CONSTRAINT `comentario_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id`),
   ADD CONSTRAINT `comentario_ibfk_2` FOREIGN KEY (`id_jugador`) REFERENCES `jugador` (`id`);
+
+--
+-- Filtros para la tabla `imagen`
+--
+ALTER TABLE `imagen`
+  ADD CONSTRAINT `imagen_ibfk_1` FOREIGN KEY (`id_jugador`) REFERENCES `jugador` (`id`);
 
 --
 -- Filtros para la tabla `jugador`

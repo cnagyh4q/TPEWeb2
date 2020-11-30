@@ -26,16 +26,14 @@
             $this->default= 2;
         }
 
-        function indoor(){
-            
-            $jugadoresVoley = $this->model->getJugadores();
-            $cantidadTotal = count($jugadoresVoley);
-            $cantMostrar = $this->default;
-            $nroPag= 0;
+        function indoor(){        
+           
             
             if ( isset($_GET['pag'])  && isset($_GET['cant']) && !empty($_GET['cant']) && !empty($_GET['pag']) ){
                 $paginaLimpia =   $_GET['pag'];  
                 $cantMostrar = $_GET['cant'];
+                $jugadoresVoley = $this->model->getJugadores();
+                $cantidadTotal = count($jugadoresVoley);
 
                 if ($paginaLimpia<1  || $cantMostrar <1 ){
                     $paginaLimpia=1;
