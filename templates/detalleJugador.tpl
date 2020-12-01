@@ -26,7 +26,7 @@
 
         <div id="form-imagenes" class="oculto">
             <form action="agregarImagen/{$jugador->id}" method="POST" enctype="multipart/form-data">
-               <input type="file" REQUIRED name="image[]" multiple>
+               <input type="file" REQUIRED name="image" multiple  accept="image/*>
                 <input name="descripcion" placeholder="Descripcion">
                <button type="submit" class="">Agregar imagen</button>
             </form>
