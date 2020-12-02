@@ -5,7 +5,7 @@
     require_once 'Controller/RegistroController.php';
     require_once 'RouterClass.php';
     require_once 'Controller/UserController.php';
-    require_once 'Controller/ImagenesController.php';
+    require_once 'Controller/ImagenController.php';
     
     // CONSTANTES PARA RUTEO
     define("BASE_URL", 'http://'.$_SERVER["SERVER_NAME"].':'.$_SERVER["SERVER_PORT"].dirname($_SERVER["PHP_SELF"]).'/');
