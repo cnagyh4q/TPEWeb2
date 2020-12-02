@@ -26,9 +26,9 @@
 
         <div id="form-imagenes" class="oculto">
             <form action="agregarImagen/{$jugador->id}" method="POST" enctype="multipart/form-data">
-               <input type="file" REQUIRED name="image" multiple  accept="image/*>
-                <input name="descripcion" placeholder="Descripcion">
-               <button type="submit" class="">Agregar imagen</button>
+                <input type="file" name="imagenes[]" multiple accept="image/*" required>
+                <input name="descripcion" placeholder="Descripcion" required>
+                <button type="submit" class="">Agregar imagen</button>
             </form>
         </div>
         {/if}
@@ -38,20 +38,16 @@
     {include file="Vue/Comentarios.tpl"}
 
     <div class="col-10">
+        {if isset($session) && $session->validSession() && $session->isAdmin() && isset($imagenes) && !empty($imagenes)}
+        <button class="fa fa-ban delet" id="btn-eliminar-imagen"> Eliminar</button>
+        {/if}
         <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
-                <div class="carousel-item active">
-                {if isset($session) && $session->validSession() && $session->isAdmin()}
-                    <a href="eliminar/{$jugador->id}" class="fa fa-ban delet"> Eliminar Imagen Actual</a>
-                {/if}
-                    <img class="d-block w-100" src="image/beach/IMG-beach1.jpg" alt="First slide">                    
+                {foreach from=$imagenes item=img }
+                <div id="{$img->id}" class="carousel-item">
+                    <img class="d-block w-100" src="{$img->path}" alt="{$img->descripcion}">
                 </div>
-                <div class="carousel-item">
-                    <img class="d-block w-100" src="image/beach/IMG-beach2.jpg" alt="Second slide">
-                </div>
-                <div class="carousel-item">
-                    <img class="d-block w-100" src="image/beach/IMG-beach3.jpg" alt="Third slide">
-                </div>
+                {/foreach}
             </div>
             <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>

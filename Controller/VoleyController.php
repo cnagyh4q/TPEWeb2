@@ -3,6 +3,7 @@
     require_once "./View/HomeView.php";
     require_once "./View/IndoorView.php";
     require_once "./Model/JugadorModel.php";
+    require_once "./Model/ImagenModel.php";
     require_once "./Model/PosicionesModel.php";
     require_once "./Controller/Session.php";
 
@@ -11,6 +12,7 @@
         private $homeView;
         private $indoorView;
         private $model;
+        private $modelImg;
         private $modelposicion;
         private $session;
         private $login;
@@ -20,6 +22,7 @@
             $this->indoorView = new IndoorView();
             $this->homeView = new HomeView();
             $this->model = new JugadorModel();
+            $this->modelImg = new ImagenModel();
             $this->session = new Session();
             $this->login = new LoginView();
             $this->modelposicion= new PosicionesModel();
@@ -80,7 +83,14 @@
         function detalleJugador($params = null){
             $id = $params[':ID'];
             $jugador = $this->model->getJugador($id);
-            $this->indoorView->showDetalleJugador($jugador,$this->session);
+            if ($jugador){
+                $imagenes = $this->modelImg->getImagenByJugadorid($id);
+                $this->indoorView->showDetalleJugador($jugador, $imagenes ,$this->session);
+            }
+            else{
+                $this->home();
+            }
+            
         }
 
 

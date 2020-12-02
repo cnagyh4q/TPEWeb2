@@ -8,4 +8,21 @@ document.addEventListener("DOMContentLoaded", function () {
     })
 
 
+    document.querySelectorAll(".carousel-item")[0].classList.toggle("active");
+
+    document.querySelector("#btn-eliminar-imagen").addEventListener("click", ()=>{
+
+        let id = document.querySelector(".active").id;
+
+        location.href=`eliminarImagen/${id}`;
+
+
+
+    })
+
+    
+
+    
+
+
 });

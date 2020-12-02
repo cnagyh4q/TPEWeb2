@@ -48,7 +48,6 @@
                     
                     }
                     header("Location: " . $_SERVER['HTTP_REFERER']);
-                    //$this->homeView->showHome($this->session);
             }
             else{
                 $this->login->showLogin("Se requiere permisos");
@@ -56,10 +55,8 @@
         }
 
         function agregarPosicion(){
-            if ($this->session->validSession() && $this->session->isAdmin()){
-            
-                $this->posicionesView->agregarPosicion($this->session);
-            
+            if ($this->session->validSession() && $this->session->isAdmin()){            
+                $this->posicionesView->agregarPosicion($this->session);           
             }
             else{
                 $this->login->showLogin("Se requiere permisos");

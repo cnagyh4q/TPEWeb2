@@ -25,7 +25,7 @@ class ImagenModel{
 
   
     function insertarImagen($path, $id_jugador , $detalle ){       
-        $sentencia = $this->db->prepare("INSERT INTO imagen(path , id_jugador , detalle) VALUES (? , ? ,?)");
+        $sentencia = $this->db->prepare("INSERT INTO imagen(path , id_jugador , descripcion) VALUES (? , ? ,?)");
         $sentencia->execute(array($path,$id_jugador ,$detalle ));
         return $this->db->lastInsertId();
     }

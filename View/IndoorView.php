@@ -35,10 +35,11 @@ class IndoorView{
             
         }
 
-        function showDetalleJugador($jugador , $session = null){
+        function showDetalleJugador($jugador , $imagenes = null, $session = null){
             
             $this->smarty->assign('session',$session);
             $this->smarty->assign('jugador', $jugador);
+            $this->smarty->assign('imagenes', $imagenes);
             $this->smarty->display('templates/detalleJugador.tpl');
 
         }
