@@ -50,7 +50,8 @@
                         $this->model->insertarPosicion($_POST['nombre']);
                     
                     }
-                    header("Location: " . $_SERVER['HTTP_REFERER']);
+                    
+                    header("Location: ".BASE_URL."editarPosiciones");
             }
             else{
                 $this->login->showLogin("Se requiere permisos");
