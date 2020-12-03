@@ -20,6 +20,18 @@ class PosicionesView{
             $smarty->display('templates/administradorPosiciones.tpl');
         }
 
+
+        function confirmarEliminar($jugadoresDelete, $id , $session) {
+            $smarty = new Smarty();
+            $smarty->assign('titulo',"Confirmar");
+            $smarty->assign('session', $session);
+            $smarty->assign('jugadores',$jugadoresDelete);
+            $smarty->assign('idPos',$id);
+            $smarty->assign('url',BASE_URL);
+            $smarty->display('templates/confirmarEliminar.tpl');
+
+        }
+
         function agregarPosicion($session = null){
             $smarty = new Smarty();
             $smarty->assign('titulo', $this->title);

@@ -3,11 +3,13 @@
     require_once "./View/HomeView.php";
     require_once "./View/PosicionesView.php";
     require_once "./Model/PosicionesModel.php";
+   
     require_once "./Controller/Session.php";
 
     class PosicionesController {
 
         private  $model;
+       
         private  $session; 
         private  $posicionesView;
         private  $homeView;
@@ -21,6 +23,7 @@
             $this->posicionesView = new PosicionesView();
             $this->session = new Session();
             $this->login = new LoginView();
+   
 
         }
 
@@ -94,9 +97,21 @@
         function eliminarPosicionDB($params = null){
             if ($this->session->validSession() && $this->session->isAdmin()){
                 $id= $params[':ID'];
-                $this->model->eliminarPosicion($id);
-                header("Location: " . $_SERVER['HTTP_REFERER']);
-            }
+               
+                if (!empty($id)){
+                    if ( isset($_GET['accept'])){
+                      
+                        $this->model->eliminarPosicion($id);
+                        header("Location: ".BASE_URL."editarPosiciones");
+                     }
+                     else {
+                         $jugadoresDelete =$this->model->getJugadoresByPosicionId($id);
+                        $this->posicionesView->confirmarEliminar($jugadoresDelete , $id , $this->session);
+
+                     }
+                }
+
+             }
             else{
                 $this->login->showLogin("Se requiere permisos");
             }

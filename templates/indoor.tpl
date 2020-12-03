@@ -47,9 +47,7 @@
                 <tbody class="tablaInfoEquipo">
                     {foreach from=$jugadores_voley item=jugador }
                     <tr id="jugador{$jugador->id}">
-                        <td>{$jugador->numero}</td>
-                        {* esto hay que acomodarlo y traerlo con un join *}
-                        
+                        <td>{$jugador->numero}</td>                        
                         <td>{$jugador->posicion}</td>
                         
                         <td>{$jugador->nombre}</td>

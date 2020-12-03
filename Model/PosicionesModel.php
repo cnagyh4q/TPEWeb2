@@ -31,6 +31,14 @@ class PosicionesModel{
         
     }
 
+    
+
+    function getJugadoresByPosicionId($id){
+        $sentencia = $this->db->prepare("SELECT p.nombre as posicion , j.nombre , j.numero FROM posicion as p RIGHT JOIN jugador as j on j.id_posicion = p.id where p.id = ?");
+        $sentencia->execute(array($id));
+        return $sentencia->fetchAll(PDO::FETCH_OBJ);
+    }
+
     function insertarPosicion($nombre){
        
         $sentencia = $this->db->prepare("INSERT INTO posicion(nombre) VALUES (?)");
